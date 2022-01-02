@@ -33,8 +33,32 @@ extension UITextField {
 
           let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
     
+//        if self.text!.isEmpty {
+//            action(true)
+//
+//        }
+        
         action(emailPred.evaluate(with: self.text))
      
+    }
+    
+    func checkEmptyInput(action: (_ emptyResult : Bool) -> Void) {
+        
+    
+        action(self.text!.isEmpty)
+    }
+    
+    
+    // change the color of the text field to red
+    func invalidInput()  {
+        self.layer.borderWidth = 1.0
+        self.layer.borderColor = UIColor(red: 100, green: 0, blue: 0, alpha: 1).cgColor
+    }
+    
+    // change the color of the text field back to normal
+    func validInput()  {
+        self.layer.borderWidth = 0.0
+      
     }
     
     

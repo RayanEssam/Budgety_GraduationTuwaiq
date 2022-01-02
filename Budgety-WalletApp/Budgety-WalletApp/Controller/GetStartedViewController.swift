@@ -24,11 +24,11 @@ class GetStartedViewController: UIViewController {
     @IBOutlet var signUpConfirmPasswordTextField: UITextField!
     @IBOutlet var signUpButton: UIButton!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
-   
+        
     }
     
     @IBAction func changeSegmentAction(_ sender: Any) {
@@ -41,7 +41,7 @@ class GetStartedViewController: UIViewController {
         case 1 :
             logInStackView.isHidden = true
             signUpStackView.isHidden = false
-
+            
         default :
             print("error")
             
@@ -51,16 +51,61 @@ class GetStartedViewController: UIViewController {
     }
     
     @IBAction func LogInActionButton(_ sender: Any) {
-    
-        emailTextFiled.checkEmailFormat { result in
-            if result {
-                print("Good email")
+        
+        
+        emailTextFiled.checkEmptyInput { emptyResult in
+            
+            if emptyResult {
+                // empty email here
+                // show alert here
+                
+                
+                emailTextFiled.invalidInput()
                 
             }else{
-                print("Bad email")
+                emailTextFiled.validInput()
+                
+                passwordTextField.checkEmptyInput { emptyResult in
+                    
+                    if emptyResult {
+                        
+                        // empty Password here
+                        // show alert here
+                        
+                        
+                        passwordTextField.invalidInput()
+                        
+                    }else{
+                        passwordTextField.validInput()
+                        emailTextFiled.checkEmailFormat { result in
+                            if result {
+                             
+                                emailTextFiled.validInput()
+                                // SignIn here
+                                
+                                
+                            }else{
+                                
+                                emailTextFiled.invalidInput()
+                                // bad email format here
+                                // show alert here
+                            }
+                        }
+                    }
+                    
+                    
+                }
+                
+                
+                
             }
+            
+            
+            
+            
         }
-    
+        
+        
     }
     
     
@@ -73,6 +118,7 @@ class GetStartedViewController: UIViewController {
                 
             }else{
                 print("Bad email")
+                
             }
         }
     }
@@ -92,7 +138,7 @@ extension GetStartedViewController {
         
         
         emailTextFiled.setPaddingWithImage(image:  UIImage(systemName: "envelope")!)
-   
+        
         passwordTextField.setPaddingWithImage(image: UIImage(systemName: "lock")!)
         
         signUpEmailTextField.setPaddingWithImage(image:  UIImage(systemName: "envelope")!)
@@ -106,7 +152,7 @@ extension GetStartedViewController {
         
         // logIn Button
         logInButton.layer.cornerRadius = 15
-    
+        
         
         // signUp button
         signUpButton.layer.cornerRadius = 15
@@ -114,7 +160,7 @@ extension GetStartedViewController {
         
     }
     
-  
+    
     
 }
 
