@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6EEA94380A185F5C0566AD56 /* Pods_Budgety_WalletApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB0F30AD056ED0655A60077 /* Pods_Budgety_WalletApp.framework */; };
 		CF387A51278181E000301100 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A50278181E000301100 /* AppDelegate.swift */; };
 		CF387A53278181E000301100 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A52278181E000301100 /* SceneDelegate.swift */; };
 		CF387A55278181E000301100 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A54278181E000301100 /* ViewController.swift */; };
@@ -14,9 +15,12 @@
 		CF387A5B278181E000301100 /* Budgety_WalletApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF387A59278181E000301100 /* Budgety_WalletApp.xcdatamodeld */; };
 		CF387A5D278181E600301100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF387A5C278181E600301100 /* Assets.xcassets */; };
 		CF387A60278181E600301100 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF387A5E278181E600301100 /* LaunchScreen.storyboard */; };
+		CF387A682781856400301100 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF387A672781856400301100 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B3485C0E4A14D51A204F53C4 /* Pods-Budgety-WalletApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgety-WalletApp.release.xcconfig"; path = "Target Support Files/Pods-Budgety-WalletApp/Pods-Budgety-WalletApp.release.xcconfig"; sourceTree = "<group>"; };
+		C6AD7A9D7D25111EBE9E3ACC /* Pods-Budgety-WalletApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgety-WalletApp.debug.xcconfig"; path = "Target Support Files/Pods-Budgety-WalletApp/Pods-Budgety-WalletApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CF387A4D278181E000301100 /* Budgety-WalletApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Budgety-WalletApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF387A50278181E000301100 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF387A52278181E000301100 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +30,8 @@
 		CF387A5C278181E600301100 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF387A5F278181E600301100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF387A61278181E600301100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF387A672781856400301100 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FBB0F30AD056ED0655A60077 /* Pods_Budgety_WalletApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budgety_WalletApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EEA94380A185F5C0566AD56 /* Pods_Budgety_WalletApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43FBFCD57EBFEA67DCC94CBC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C6AD7A9D7D25111EBE9E3ACC /* Pods-Budgety-WalletApp.debug.xcconfig */,
+				B3485C0E4A14D51A204F53C4 /* Pods-Budgety-WalletApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6620AA3A4857A4D71267DD98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FBB0F30AD056ED0655A60077 /* Pods_Budgety_WalletApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CF387A44278181E000301100 = {
 			isa = PBXGroup;
 			children = (
 				CF387A4F278181E000301100 /* Budgety-WalletApp */,
 				CF387A4E278181E000301100 /* Products */,
+				43FBFCD57EBFEA67DCC94CBC /* Pods */,
+				6620AA3A4857A4D71267DD98 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +84,41 @@
 		CF387A4F278181E000301100 /* Budgety-WalletApp */ = {
 			isa = PBXGroup;
 			children = (
+				CF387A6B27818B3B00301100 /* Controller */,
+				CF387A6A27818B3600301100 /* View */,
+				CF387A6927818B2E00301100 /* Model */,
 				CF387A50278181E000301100 /* AppDelegate.swift */,
 				CF387A52278181E000301100 /* SceneDelegate.swift */,
-				CF387A54278181E000301100 /* ViewController.swift */,
-				CF387A56278181E000301100 /* Main.storyboard */,
 				CF387A5C278181E600301100 /* Assets.xcassets */,
-				CF387A5E278181E600301100 /* LaunchScreen.storyboard */,
+				CF387A672781856400301100 /* GoogleService-Info.plist */,
 				CF387A61278181E600301100 /* Info.plist */,
 				CF387A59278181E000301100 /* Budgety_WalletApp.xcdatamodeld */,
 			);
 			path = "Budgety-WalletApp";
+			sourceTree = "<group>";
+		};
+		CF387A6927818B2E00301100 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF387A6A27818B3600301100 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF387A5E278181E600301100 /* LaunchScreen.storyboard */,
+				CF387A56278181E000301100 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF387A6B27818B3B00301100 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CF387A54278181E000301100 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +128,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF387A64278181E600301100 /* Build configuration list for PBXNativeTarget "Budgety-WalletApp" */;
 			buildPhases = (
+				8AD3A905CD6F0D61C4820023 /* [CP] Check Pods Manifest.lock */,
 				CF387A49278181E000301100 /* Sources */,
 				CF387A4A278181E000301100 /* Frameworks */,
 				CF387A4B278181E000301100 /* Resources */,
+				245AEB1027BDFD366323968C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,12 +182,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF387A60278181E600301100 /* LaunchScreen.storyboard in Resources */,
+				CF387A682781856400301100 /* GoogleService-Info.plist in Resources */,
 				CF387A5D278181E600301100 /* Assets.xcassets in Resources */,
 				CF387A58278181E000301100 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		245AEB1027BDFD366323968C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Budgety-WalletApp/Pods-Budgety-WalletApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Budgety-WalletApp/Pods-Budgety-WalletApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Budgety-WalletApp/Pods-Budgety-WalletApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8AD3A905CD6F0D61C4820023 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Budgety-WalletApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CF387A49278181E000301100 /* Sources */ = {
@@ -288,6 +384,7 @@
 		};
 		CF387A65278181E600301100 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6AD7A9D7D25111EBE9E3ACC /* Pods-Budgety-WalletApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -315,6 +412,7 @@
 		};
 		CF387A66278181E600301100 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3485C0E4A14D51A204F53C4 /* Pods-Budgety-WalletApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
