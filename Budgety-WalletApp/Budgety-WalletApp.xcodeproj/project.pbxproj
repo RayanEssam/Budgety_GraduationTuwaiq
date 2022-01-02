@@ -10,12 +10,14 @@
 		6EEA94380A185F5C0566AD56 /* Pods_Budgety_WalletApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB0F30AD056ED0655A60077 /* Pods_Budgety_WalletApp.framework */; };
 		CF387A51278181E000301100 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A50278181E000301100 /* AppDelegate.swift */; };
 		CF387A53278181E000301100 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A52278181E000301100 /* SceneDelegate.swift */; };
-		CF387A55278181E000301100 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A54278181E000301100 /* ViewController.swift */; };
+		CF387A55278181E000301100 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A54278181E000301100 /* WelcomeViewController.swift */; };
 		CF387A58278181E000301100 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF387A56278181E000301100 /* Main.storyboard */; };
 		CF387A5B278181E000301100 /* Budgety_WalletApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF387A59278181E000301100 /* Budgety_WalletApp.xcdatamodeld */; };
 		CF387A5D278181E600301100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF387A5C278181E600301100 /* Assets.xcassets */; };
 		CF387A60278181E600301100 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF387A5E278181E600301100 /* LaunchScreen.storyboard */; };
 		CF387A682781856400301100 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF387A672781856400301100 /* GoogleService-Info.plist */; };
+		CF387A6D278199C500301100 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A6C278199C500301100 /* CustomColors.swift */; };
+		CF387A6F2781B4AB00301100 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A6E2781B4AB00301100 /* GetStartedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,13 +26,15 @@
 		CF387A4D278181E000301100 /* Budgety-WalletApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Budgety-WalletApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF387A50278181E000301100 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF387A52278181E000301100 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CF387A54278181E000301100 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CF387A54278181E000301100 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		CF387A57278181E000301100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF387A5A278181E000301100 /* Budgety_WalletApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Budgety_WalletApp.xcdatamodel; sourceTree = "<group>"; };
 		CF387A5C278181E600301100 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF387A5F278181E600301100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF387A61278181E600301100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF387A672781856400301100 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CF387A6C278199C500301100 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		CF387A6E2781B4AB00301100 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		FBB0F30AD056ED0655A60077 /* Pods_Budgety_WalletApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budgety_WalletApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -100,6 +104,7 @@
 		CF387A6927818B2E00301100 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CF387A6C278199C500301100 /* CustomColors.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -116,7 +121,8 @@
 		CF387A6B27818B3B00301100 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CF387A54278181E000301100 /* ViewController.swift */,
+				CF387A54278181E000301100 /* WelcomeViewController.swift */,
+				CF387A6E2781B4AB00301100 /* GetStartedViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -237,8 +243,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF387A55278181E000301100 /* ViewController.swift in Sources */,
+				CF387A55278181E000301100 /* WelcomeViewController.swift in Sources */,
+				CF387A6D278199C500301100 /* CustomColors.swift in Sources */,
 				CF387A51278181E000301100 /* AppDelegate.swift in Sources */,
+				CF387A6F2781B4AB00301100 /* GetStartedViewController.swift in Sources */,
 				CF387A53278181E000301100 /* SceneDelegate.swift in Sources */,
 				CF387A5B278181E000301100 /* Budgety_WalletApp.xcdatamodeld in Sources */,
 			);
