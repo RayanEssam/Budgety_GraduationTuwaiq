@@ -19,6 +19,8 @@
 		CF387A6D278199C500301100 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A6C278199C500301100 /* CustomColors.swift */; };
 		CF387A6F2781B4AB00301100 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A6E2781B4AB00301100 /* GetStartedViewController.swift */; };
 		CF387A7127820E5C00301100 /* UITextFieldExtension .swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A7027820E5B00301100 /* UITextFieldExtension .swift */; };
+		CF9D29852782CDB900AA6F1D /* DataBaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D29842782CDB900AA6F1D /* DataBaseHandler.swift */; };
+		CF9D29872782E92100AA6F1D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D29862782E92100AA6F1D /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		CF387A6C278199C500301100 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		CF387A6E2781B4AB00301100 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		CF387A7027820E5B00301100 /* UITextFieldExtension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextFieldExtension .swift"; sourceTree = "<group>"; };
+		CF9D29842782CDB900AA6F1D /* DataBaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseHandler.swift; sourceTree = "<group>"; };
+		CF9D29862782E92100AA6F1D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FBB0F30AD056ED0655A60077 /* Pods_Budgety_WalletApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budgety_WalletApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -126,6 +130,8 @@
 				CF387A54278181E000301100 /* WelcomeViewController.swift */,
 				CF387A6E2781B4AB00301100 /* GetStartedViewController.swift */,
 				CF387A7027820E5B00301100 /* UITextFieldExtension .swift */,
+				CF9D29842782CDB900AA6F1D /* DataBaseHandler.swift */,
+				CF9D29862782E92100AA6F1D /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -249,7 +255,9 @@
 				CF387A55278181E000301100 /* WelcomeViewController.swift in Sources */,
 				CF387A6D278199C500301100 /* CustomColors.swift in Sources */,
 				CF387A51278181E000301100 /* AppDelegate.swift in Sources */,
+				CF9D29852782CDB900AA6F1D /* DataBaseHandler.swift in Sources */,
 				CF387A6F2781B4AB00301100 /* GetStartedViewController.swift in Sources */,
+				CF9D29872782E92100AA6F1D /* HomeViewController.swift in Sources */,
 				CF387A7127820E5C00301100 /* UITextFieldExtension .swift in Sources */,
 				CF387A53278181E000301100 /* SceneDelegate.swift in Sources */,
 				CF387A5B278181E000301100 /* Budgety_WalletApp.xcdatamodeld in Sources */,

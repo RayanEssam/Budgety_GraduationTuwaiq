@@ -23,6 +23,7 @@ class GetStartedViewController: UIViewController {
     @IBOutlet var signUpPasswordTextField: UITextField!
     @IBOutlet var signUpConfirmPasswordTextField: UITextField!
     @IBOutlet var signUpButton: UIButton!
+    @IBOutlet var phoneNumberTextField: UITextField!
     
     
     override func viewDidLoad() {
@@ -82,6 +83,7 @@ class GetStartedViewController: UIViewController {
                              
                                 emailTextFiled.validInput()
                                 // SignIn here
+                                print("All good")
                                 
                                 
                             }else{
@@ -112,15 +114,123 @@ class GetStartedViewController: UIViewController {
     @IBAction func signUpActionButton(_ sender: Any) {
         
         
-        signUpEmailTextField.checkEmailFormat { result in
-            if result {
-                print("Good email")
+        signUpEmailTextField.checkEmptyInput { emailEmptyResult in
+            
+            
+            if emailEmptyResult {
+                // empty email here
+                // show alert here
                 
+                
+                signUpEmailTextField.invalidInput()
             }else{
-                print("Bad email")
+                signUpEmailTextField.validInput()
+                
+                signUpNameTextField.checkEmptyInput { nameEmptyResult in
+                
+                    
+                    if nameEmptyResult {
+                        signUpNameTextField.invalidInput()
+                    }else{
+                        signUpNameTextField.validInput()
+                        
+                        signUpPasswordTextField.checkEmptyInput{ passwordEmptyResult in
+                            
+                            if passwordEmptyResult {
+                                
+                                // empty Password here
+                                // show alert here
+                                
+                                
+                                signUpPasswordTextField.invalidInput()
+                                
+                            }else{
+                                signUpPasswordTextField.validInput()
+                                signUpConfirmPasswordTextField.checkEmptyInput { confirmPasswordEmptyResult in
+                                
+                                    if confirmPasswordEmptyResult {
+                                        // show alert here
+                                        
+                                        signUpConfirmPasswordTextField.invalidInput()
+                                        
+                                    }else{
+                                        signUpConfirmPasswordTextField.validInput()
+
+                                        signUpEmailTextField.checkEmailFormat { result in
+                                            if result {
+                                             
+                                                signUpEmailTextField.validInput()
+                                                
+                                                
+                                                if signUpPasswordTextField.text == signUpConfirmPasswordTextField.text {
+                                                    
+                                                    signUpPasswordTextField.validInput()
+                                                    signUpConfirmPasswordTextField.validInput()
+                                                    
+                                                    // SignUp here
+                                                    print("All good")
+                                                    
+                                                    DatabaseHandler.shared.createNewUser(email: signUpEmailTextField.text!, passwoord: signUpPasswordTextField.text!, name: signUpNameTextField.text! , phonNumber: phoneNumberTextField.text ?? "")
+                                                    
+                                                    
+                                                }else{
+                                                    
+                                                    // show alert
+                                                    // password does not match
+                                                    
+                                                    signUpPasswordTextField.invalidInput()
+                                                    signUpConfirmPasswordTextField.invalidInput()
+
+                                                    
+                                                }
+                                                
+                                            }else{
+                                                
+                                                signUpEmailTextField.invalidInput()
+                                                // bad email format here
+                                                // show alert here
+                                            }
+                                        }
+                                    }
+                                    
+                                    
+                                }
+                                
+                                
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        
+
+                    }
+                    
+                    
+                }
+                
+                
+                
                 
             }
+            
+            
+            
+            
         }
+        
+        
+        
+//        signUpEmailTextField.checkEmailFormat { result in
+//            if result {
+//                print("Good email")
+//
+//            }else{
+//                print("Bad email")
+//
+//            }
+//        }
     }
     
     
@@ -148,6 +258,8 @@ extension GetStartedViewController {
         signUpPasswordTextField.setPaddingWithImage(image: UIImage(systemName: "lock.open")!)
         
         signUpConfirmPasswordTextField.setPaddingWithImage(image: UIImage(systemName: "lock")!)
+        
+        phoneNumberTextField.setPaddingWithImage(image: UIImage(systemName: "phone")!)
         
         
         // logIn Button
