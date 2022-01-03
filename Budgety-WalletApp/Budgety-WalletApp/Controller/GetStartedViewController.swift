@@ -85,6 +85,9 @@ class GetStartedViewController: UIViewController {
                                 // SignIn here
                                 print("All good")
                                 
+//                                let tabBarVC = TabBarController()
+//                                self.present(tabBarVC, animated: true, completion: nil)
+                                
                                 
                             }else{
                                 
