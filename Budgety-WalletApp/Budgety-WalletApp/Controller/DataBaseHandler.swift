@@ -35,7 +35,7 @@ class DatabaseHandler {
                                                     "name" : "\(name)",
                                                     "phone": "\(phonNumber)",
                                                     "email": "\(email)",
-                                                    "balance": "\(0)"
+                                                    "balance": 0 as! Float
                                       
                                                        
                                                    ])
@@ -60,20 +60,48 @@ class DatabaseHandler {
     }
     
     
-    func logIn(email : String , password : String)  {
+    func logIn(email : String , password : String, completion: @escaping( Error?) -> Void)  {
         
         Auth.auth().signIn(withEmail: email, password: password) {  authResult, error in
                 
                 if error == nil {
-                    
-                 
-                    
+
+                    self.db.collection("Users").whereField("email", isEqualTo: email)
+                      
+                          .getDocuments { querySnapshot, error in
+                              
+                              if error == nil {
+                                  
+                                  let name = querySnapshot?.documents[0].get("name")! as! String
+                                  let email = querySnapshot?.documents[0].get("email")! as! String
+                                  let phone = querySnapshot?.documents[0].get("phone")! as! String
+                                  let balance = querySnapshot?.documents[0].get("balance")! as! Float
+                                  
+                                  
+                                  User.shared.userName = name
+                                  User.shared.userEmail = email
+                                  User.shared.userPhone = phone
+                                  User.shared.userBalance = balance
+                                  
+                                 completion(error)
+                                  
+                              } else {
+                                  print(error!.localizedDescription)
+                              }
+                          }
+                                    
                 } else {
                     print(error!.localizedDescription)
                 }
                 
             }
     }
+    
+    
+    
+//    func add(<#parameters#>) -> <#return type#> {
+//        <#function body#>
+//    }
     
     
     

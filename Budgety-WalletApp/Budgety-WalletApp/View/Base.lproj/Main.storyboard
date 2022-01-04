@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ynE-r0-jjJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -713,10 +713,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="APe-li-iKx">
-                                <rect key="frame" x="0.0" y="118" width="414" height="690"/>
+                                <rect key="frame" x="0.0" y="118" width="414" height="812"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gYr-HL-fRM">
-                                        <rect key="frame" x="20.5" y="39" width="373" height="552"/>
+                                        <rect key="frame" x="20.5" y="15" width="373" height="690"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1G-o8-hrG">
                                                 <rect key="frame" x="0.0" y="0.0" width="373" height="138"/>
@@ -944,16 +944,37 @@
                                                     <constraint firstAttribute="height" constant="138" id="iNg-3l-FaA"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6K-1G-hJd">
+                                                <rect key="frame" x="0.0" y="552" width="373" height="138"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rmd-kC-W7X">
+                                                        <rect key="frame" x="20" y="48.5" width="333" height="41"/>
+                                                        <color key="backgroundColor" name="MainColor"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Add">
+                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </buttonConfiguration>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="Rmd-kC-W7X" firstAttribute="centerX" secondItem="m6K-1G-hJd" secondAttribute="centerX" id="Hp6-Uq-Cn3"/>
+                                                    <constraint firstItem="Rmd-kC-W7X" firstAttribute="leading" secondItem="m6K-1G-hJd" secondAttribute="leading" constant="20" id="QMS-uW-QQ7"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Rmd-kC-W7X" secondAttribute="trailing" constant="20" id="RL1-q5-tSk"/>
+                                                    <constraint firstItem="Rmd-kC-W7X" firstAttribute="centerY" secondItem="m6K-1G-hJd" secondAttribute="centerY" id="Zft-do-PK7"/>
+                                                    <constraint firstItem="Rmd-kC-W7X" firstAttribute="height" secondItem="m6K-1G-hJd" secondAttribute="height" multiplier="0.3" id="tk9-Dc-eGB"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="gYr-HL-fRM" firstAttribute="height" secondItem="APe-li-iKx" secondAttribute="height" multiplier="0.8" id="4oi-Dr-4Mg"/>
-                                    <constraint firstItem="gYr-HL-fRM" firstAttribute="centerY" secondItem="APe-li-iKx" secondAttribute="centerY" constant="-30" id="EaD-3c-yN3"/>
+                                    <constraint firstItem="gYr-HL-fRM" firstAttribute="top" secondItem="APe-li-iKx" secondAttribute="top" constant="15" id="5g5-3L-r97"/>
                                     <constraint firstItem="gYr-HL-fRM" firstAttribute="centerX" secondItem="APe-li-iKx" secondAttribute="centerX" id="bpi-JH-GCg"/>
                                     <constraint firstItem="gYr-HL-fRM" firstAttribute="width" secondItem="APe-li-iKx" secondAttribute="width" multiplier="0.9" id="c7N-hL-q9E"/>
+                                    <constraint firstItem="gYr-HL-fRM" firstAttribute="height" secondItem="APe-li-iKx" secondAttribute="height" multiplier="0.85" id="fYX-in-Ykq"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1191,10 +1212,10 @@
             </objects>
             <point key="canvasLocation" x="3082.608695652174" y="324.77678571428572"/>
         </scene>
-        <!--Tap Bar-->
+        <!--Tab Bar Controller-->
         <scene sceneID="lny-pT-462">
             <objects>
-                <tabBarController storyboardIdentifier="TapBar" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" interfaceStyle="light" id="ynE-r0-jjJ" customClass="TapBar" customModule="Budgety_WalletApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" interfaceStyle="light" id="ynE-r0-jjJ" customClass="TabBarController" customModule="Budgety_WalletApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sdC-Rl-Pgc">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -1205,7 +1226,6 @@
                         <color key="selectedImageTintColor" name="MainColor"/>
                     </tabBar>
                     <connections>
-                        <outlet property="tapBar" destination="sdC-Rl-Pgc" id="uUd-xz-IE3"/>
                         <segue destination="pxV-sx-GdI" kind="relationship" relationship="viewControllers" id="4s2-zr-F5d"/>
                         <segue destination="GRV-XC-zdk" kind="relationship" relationship="viewControllers" id="4de-ds-0MY"/>
                         <segue destination="4uf-gy-fEJ" kind="relationship" relationship="viewControllers" id="F3u-dY-vqd"/>

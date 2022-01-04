@@ -80,13 +80,31 @@ class GetStartedViewController: UIViewController {
                         passwordTextField.validInput()
                         emailTextFiled.checkEmailFormat { result in
                             if result {
-                             
+                                
                                 emailTextFiled.validInput()
                                 // SignIn here
                                 print("All good")
                                 
-//                                let tabBarVC = TabBarController()
-//                                self.present(tabBarVC, animated: true, completion: nil)
+                                let email = emailTextFiled.text!
+                                let password = passwordTextField.text!
+                                DatabaseHandler.shared.logIn(email:email , password: password) {  error in
+                                    
+                                    if error == nil{
+                                      
+                                        
+                                        let tabBarVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+                                        
+                                     
+                                        self.present(tabBarVC, animated: true, completion: nil)
+                                    
+                                        
+                                    }
+                                    
+                                    
+                                    
+                                }
+                                
+                                
                                 
                                 
                             }else{
@@ -130,7 +148,7 @@ class GetStartedViewController: UIViewController {
                 signUpEmailTextField.validInput()
                 
                 signUpNameTextField.checkEmptyInput { nameEmptyResult in
-                
+                    
                     
                     if nameEmptyResult {
                         signUpNameTextField.invalidInput()
@@ -150,7 +168,7 @@ class GetStartedViewController: UIViewController {
                             }else{
                                 signUpPasswordTextField.validInput()
                                 signUpConfirmPasswordTextField.checkEmptyInput { confirmPasswordEmptyResult in
-                                
+                                    
                                     if confirmPasswordEmptyResult {
                                         // show alert here
                                         
@@ -158,10 +176,10 @@ class GetStartedViewController: UIViewController {
                                         
                                     }else{
                                         signUpConfirmPasswordTextField.validInput()
-
+                                        
                                         signUpEmailTextField.checkEmailFormat { result in
                                             if result {
-                                             
+                                                
                                                 signUpEmailTextField.validInput()
                                                 
                                                 
@@ -183,7 +201,7 @@ class GetStartedViewController: UIViewController {
                                                     
                                                     signUpPasswordTextField.invalidInput()
                                                     signUpConfirmPasswordTextField.invalidInput()
-
+                                                    
                                                     
                                                 }
                                                 
@@ -207,7 +225,7 @@ class GetStartedViewController: UIViewController {
                         }
                         
                         
-
+                        
                     }
                     
                     
@@ -225,15 +243,15 @@ class GetStartedViewController: UIViewController {
         
         
         
-//        signUpEmailTextField.checkEmailFormat { result in
-//            if result {
-//                print("Good email")
-//
-//            }else{
-//                print("Bad email")
-//
-//            }
-//        }
+        //        signUpEmailTextField.checkEmailFormat { result in
+        //            if result {
+        //                print("Good email")
+        //
+        //            }else{
+        //                print("Bad email")
+        //
+        //            }
+        //        }
     }
     
     

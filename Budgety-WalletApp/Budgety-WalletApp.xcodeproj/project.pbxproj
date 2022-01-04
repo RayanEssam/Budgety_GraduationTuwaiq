@@ -21,6 +21,9 @@
 		CF387A6D278199C500301100 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A6C278199C500301100 /* CustomColors.swift */; };
 		CF387A6F2781B4AB00301100 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A6E2781B4AB00301100 /* GetStartedViewController.swift */; };
 		CF387A7127820E5C00301100 /* UITextFieldExtension .swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A7027820E5B00301100 /* UITextFieldExtension .swift */; };
+		CF98D2FD2784C62800D78251 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98D2FC2784C62800D78251 /* User.swift */; };
+		CF98D2FF2784DAE400D78251 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98D2FE2784DAE400D78251 /* Transaction.swift */; };
+		CF98D3012784DB6800D78251 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98D3002784DB6800D78251 /* TransactionType.swift */; };
 		CF9D29852782CDB900AA6F1D /* DataBaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D29842782CDB900AA6F1D /* DataBaseHandler.swift */; };
 		CF9D29872782E92100AA6F1D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D29862782E92100AA6F1D /* HomeViewController.swift */; };
 		CFAC03E727835A7100180827 /* TapBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAC03E627835A7100180827 /* TapBar.swift */; };
@@ -47,6 +50,9 @@
 		CF387A6C278199C500301100 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		CF387A6E2781B4AB00301100 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		CF387A7027820E5B00301100 /* UITextFieldExtension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextFieldExtension .swift"; sourceTree = "<group>"; };
+		CF98D2FC2784C62800D78251 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CF98D2FE2784DAE400D78251 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		CF98D3002784DB6800D78251 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 		CF9D29842782CDB900AA6F1D /* DataBaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseHandler.swift; sourceTree = "<group>"; };
 		CF9D29862782E92100AA6F1D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CFAC03E627835A7100180827 /* TapBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBar.swift; sourceTree = "<group>"; };
@@ -123,6 +129,9 @@
 			isa = PBXGroup;
 			children = (
 				CF387A6C278199C500301100 /* CustomColors.swift */,
+				CF98D2FC2784C62800D78251 /* User.swift */,
+				CF98D2FE2784DAE400D78251 /* Transaction.swift */,
+				CF98D3002784DB6800D78251 /* TransactionType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -274,10 +283,13 @@
 				CF387A55278181E000301100 /* WelcomeViewController.swift in Sources */,
 				CF387A6D278199C500301100 /* CustomColors.swift in Sources */,
 				CF0A15E92784338800D390A0 /* SavingTableViewCell.swift in Sources */,
+				CF98D2FD2784C62800D78251 /* User.swift in Sources */,
 				CF387A51278181E000301100 /* AppDelegate.swift in Sources */,
+				CF98D2FF2784DAE400D78251 /* Transaction.swift in Sources */,
 				CFAC03E927835C9A00180827 /* AddTransactionViewController.swift in Sources */,
 				CF9D29852782CDB900AA6F1D /* DataBaseHandler.swift in Sources */,
 				CF387A6F2781B4AB00301100 /* GetStartedViewController.swift in Sources */,
+				CF98D3012784DB6800D78251 /* TransactionType.swift in Sources */,
 				CFAC03ED2783711C00180827 /* TransactionTableViewCell.swift in Sources */,
 				CF9D29872782E92100AA6F1D /* HomeViewController.swift in Sources */,
 				CF387A7127820E5C00301100 /* UITextFieldExtension .swift in Sources */,

@@ -9,12 +9,12 @@ import UIKit
 
 class TapBar: UITabBarController,  UITabBarControllerDelegate {
 
-    @IBOutlet var tapBar: UITabBar!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.delegate = self
+
     
     }
     
