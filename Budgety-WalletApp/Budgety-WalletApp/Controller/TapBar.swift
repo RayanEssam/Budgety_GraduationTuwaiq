@@ -18,17 +18,17 @@ class TapBar: UITabBarController,  UITabBarControllerDelegate {
     
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-
+//    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+//
 //          if viewController is AddTransactionViewController {
 //              print("add tab")
-//            
+//
 //            let add =   storyboard?.instantiateViewController(withIdentifier: "AddTransactionViewController") as! AddTransactionViewController
 //
 //
 //              self.present(add, animated: true, completion: nil)
 //
 //          }
-      }
+//      }
 
 }

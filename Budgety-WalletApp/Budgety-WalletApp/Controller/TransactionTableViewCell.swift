@@ -22,6 +22,9 @@ class TransactionTableViewCell: UITableViewCell {
 
         transactionInnerCard.layer.cornerRadius = 15
     }
+  
+    
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

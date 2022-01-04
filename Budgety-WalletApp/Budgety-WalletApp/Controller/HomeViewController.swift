@@ -9,6 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet var addTransactionFABButton: UIButton!
     @IBOutlet var homeNavigationBar: UINavigationBar!
     
     @IBOutlet var transationSummaryView: UIView!
@@ -23,6 +24,7 @@ class HomeViewController: UIViewController {
         
         transationSummaryView.layer.cornerRadius = 15
         
+        addTransactionFABButton.layer.cornerRadius = addTransactionFABButton.frame.width/2
         
         homeNavigationBar.shadowImage = UIImage()
         homeNavigationBar.backIndicatorImage = UIImage()
@@ -69,6 +71,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         
         cell.layer.cornerRadius = 15
         
+        
         return cell
         
         
@@ -87,6 +90,9 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         return 90
     }
     
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "Header"
+//    }
     
     
     

@@ -9,10 +9,20 @@ import UIKit
 
 class AddTransactionViewController: UIViewController {
 
+    @IBOutlet var addTransactionView: UIView!
+    
+    @IBOutlet var IncomeButton: UIButton!
+    @IBOutlet var savingButton: UIButton!
+    @IBOutlet var outcomeButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        addTransactionView.layer.cornerRadius = 15
+        IncomeButton.layer.cornerRadius = 15
+        savingButton.layer.cornerRadius = 15
+        outcomeButton.layer.cornerRadius = 15
     }
     
 

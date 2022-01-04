@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6EEA94380A185F5C0566AD56 /* Pods_Budgety_WalletApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB0F30AD056ED0655A60077 /* Pods_Budgety_WalletApp.framework */; };
+		CF0A15E727841CC800D390A0 /* SavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A15E627841CC800D390A0 /* SavingViewController.swift */; };
+		CF0A15E92784338800D390A0 /* SavingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A15E82784338800D390A0 /* SavingTableViewCell.swift */; };
 		CF387A51278181E000301100 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A50278181E000301100 /* AppDelegate.swift */; };
 		CF387A53278181E000301100 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A52278181E000301100 /* SceneDelegate.swift */; };
 		CF387A55278181E000301100 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A54278181E000301100 /* WelcomeViewController.swift */; };
@@ -30,6 +32,8 @@
 /* Begin PBXFileReference section */
 		B3485C0E4A14D51A204F53C4 /* Pods-Budgety-WalletApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgety-WalletApp.release.xcconfig"; path = "Target Support Files/Pods-Budgety-WalletApp/Pods-Budgety-WalletApp.release.xcconfig"; sourceTree = "<group>"; };
 		C6AD7A9D7D25111EBE9E3ACC /* Pods-Budgety-WalletApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgety-WalletApp.debug.xcconfig"; path = "Target Support Files/Pods-Budgety-WalletApp/Pods-Budgety-WalletApp.debug.xcconfig"; sourceTree = "<group>"; };
+		CF0A15E627841CC800D390A0 /* SavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingViewController.swift; sourceTree = "<group>"; };
+		CF0A15E82784338800D390A0 /* SavingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingTableViewCell.swift; sourceTree = "<group>"; };
 		CF387A4D278181E000301100 /* Budgety-WalletApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Budgety-WalletApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF387A50278181E000301100 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF387A52278181E000301100 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 				CFAC03E827835C9A00180827 /* AddTransactionViewController.swift */,
 				CFAC03EA278362AA00180827 /* TabBarController.swift */,
 				CFAC03EC2783711C00180827 /* TransactionTableViewCell.swift */,
+				CF0A15E627841CC800D390A0 /* SavingViewController.swift */,
+				CF0A15E82784338800D390A0 /* SavingTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -264,8 +270,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF0A15E727841CC800D390A0 /* SavingViewController.swift in Sources */,
 				CF387A55278181E000301100 /* WelcomeViewController.swift in Sources */,
 				CF387A6D278199C500301100 /* CustomColors.swift in Sources */,
+				CF0A15E92784338800D390A0 /* SavingTableViewCell.swift in Sources */,
 				CF387A51278181E000301100 /* AppDelegate.swift in Sources */,
 				CFAC03E927835C9A00180827 /* AddTransactionViewController.swift in Sources */,
 				CF9D29852782CDB900AA6F1D /* DataBaseHandler.swift in Sources */,
