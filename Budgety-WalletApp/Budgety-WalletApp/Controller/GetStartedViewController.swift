@@ -32,6 +32,14 @@ class GetStartedViewController: UIViewController {
         
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // Get all users by email , if nil or error
+        // get all eng by email 
+        
+    }
+    
     @IBAction func changeSegmentAction(_ sender: Any) {
         
         switch segmentControll.selectedSegmentIndex  {

@@ -15,7 +15,7 @@ class User {
     private var email : String = ""
     private var phone : String = ""
     private  var balance : Float = 0
-    
+    private var wallet : Wallet? = nil
    private init(){
         
     }
@@ -39,7 +39,6 @@ class User {
            }
        }
     
-    
     var userPhone: String {
            get {
                return phone
@@ -57,6 +56,16 @@ class User {
                balance = newBalance
            }
        }
+    
+    var userWallet : Wallet?{
+        
+        get {
+            return wallet
+        }
+        set (newWallet) {
+            wallet = newWallet
+        }
+    }
     
     
    }

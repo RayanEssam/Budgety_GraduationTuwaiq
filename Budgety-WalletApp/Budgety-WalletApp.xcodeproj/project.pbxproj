@@ -30,6 +30,7 @@
 		CFAC03E927835C9A00180827 /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAC03E827835C9A00180827 /* AddTransactionViewController.swift */; };
 		CFAC03EB278362AA00180827 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAC03EA278362AA00180827 /* TabBarController.swift */; };
 		CFAC03ED2783711C00180827 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAC03EC2783711C00180827 /* TransactionTableViewCell.swift */; };
+		CFB39B632785788900217399 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB39B622785788900217399 /* Wallet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		CFAC03E827835C9A00180827 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
 		CFAC03EA278362AA00180827 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CFAC03EC2783711C00180827 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
+		CFB39B622785788900217399 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		FBB0F30AD056ED0655A60077 /* Pods_Budgety_WalletApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Budgety_WalletApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -132,6 +134,7 @@
 				CF98D2FC2784C62800D78251 /* User.swift */,
 				CF98D2FE2784DAE400D78251 /* Transaction.swift */,
 				CF98D3002784DB6800D78251 /* TransactionType.swift */,
+				CFB39B622785788900217399 /* Wallet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				CF0A15E92784338800D390A0 /* SavingTableViewCell.swift in Sources */,
 				CF98D2FD2784C62800D78251 /* User.swift in Sources */,
 				CF387A51278181E000301100 /* AppDelegate.swift in Sources */,
+				CFB39B632785788900217399 /* Wallet.swift in Sources */,
 				CF98D2FF2784DAE400D78251 /* Transaction.swift in Sources */,
 				CFAC03E927835C9A00180827 /* AddTransactionViewController.swift in Sources */,
 				CF9D29852782CDB900AA6F1D /* DataBaseHandler.swift in Sources */,

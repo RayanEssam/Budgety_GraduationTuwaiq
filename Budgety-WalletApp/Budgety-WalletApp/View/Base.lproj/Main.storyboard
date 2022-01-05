@@ -161,7 +161,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PeY-qw-ro5">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="rayantaj2016@gmail.com" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PeY-qw-ro5">
                                         <rect key="frame" x="0.0" y="172.5" width="374" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -737,63 +737,39 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="BTe-2l-HAN">
                                                                         <rect key="frame" x="0.0" y="0.0" width="353" height="59"/>
                                                                         <subviews>
-                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sgn-Xy-K84">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="107.5" height="59"/>
-                                                                                <subviews>
-                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Mi-iv-iuU">
-                                                                                        <rect key="frame" x="5.5" y="14" width="97" height="31"/>
-                                                                                        <color key="backgroundColor" name="MainColor"/>
-                                                                                        <state key="normal" title="Button"/>
-                                                                                        <buttonConfiguration key="configuration" style="plain" title="Income">
-                                                                                            <color key="baseForegroundColor" name="BackgroundColor"/>
-                                                                                        </buttonConfiguration>
-                                                                                    </button>
-                                                                                </subviews>
-                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                <constraints>
-                                                                                    <constraint firstItem="4Mi-iv-iuU" firstAttribute="width" secondItem="Sgn-Xy-K84" secondAttribute="width" multiplier="0.9" id="08f-gl-wII"/>
-                                                                                    <constraint firstItem="4Mi-iv-iuU" firstAttribute="centerY" secondItem="Sgn-Xy-K84" secondAttribute="centerY" id="Fyn-Sx-jZa"/>
-                                                                                    <constraint firstItem="4Mi-iv-iuU" firstAttribute="centerX" secondItem="Sgn-Xy-K84" secondAttribute="centerX" id="YxQ-xu-Fev"/>
-                                                                                </constraints>
-                                                                            </view>
-                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agC-sz-Nn4">
-                                                                                <rect key="frame" x="122.5" y="0.0" width="108" height="59"/>
-                                                                                <subviews>
-                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tR7-eH-CjD">
-                                                                                        <rect key="frame" x="5.5" y="14" width="97" height="31"/>
-                                                                                        <color key="backgroundColor" name="BackgroundColor"/>
-                                                                                        <state key="normal" title="Button"/>
-                                                                                        <buttonConfiguration key="configuration" style="plain" title="Saving">
-                                                                                            <color key="baseForegroundColor" name="MainColor"/>
-                                                                                        </buttonConfiguration>
-                                                                                    </button>
-                                                                                </subviews>
-                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                <constraints>
-                                                                                    <constraint firstItem="tR7-eH-CjD" firstAttribute="centerX" secondItem="agC-sz-Nn4" secondAttribute="centerX" id="ADN-j6-iOF"/>
-                                                                                    <constraint firstItem="tR7-eH-CjD" firstAttribute="centerY" secondItem="agC-sz-Nn4" secondAttribute="centerY" id="Cg3-lI-URn"/>
-                                                                                    <constraint firstItem="tR7-eH-CjD" firstAttribute="width" secondItem="agC-sz-Nn4" secondAttribute="width" multiplier="0.9" id="VrD-5z-yF8"/>
-                                                                                </constraints>
-                                                                            </view>
-                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vz-kb-wru">
-                                                                                <rect key="frame" x="245.5" y="0.0" width="107.5" height="59"/>
-                                                                                <subviews>
-                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fW-3D-WGd">
-                                                                                        <rect key="frame" x="5" y="14" width="97" height="31"/>
-                                                                                        <color key="backgroundColor" name="BackgroundColor"/>
-                                                                                        <state key="normal" title="Button"/>
-                                                                                        <buttonConfiguration key="configuration" style="plain" title="Outcome">
-                                                                                            <color key="baseForegroundColor" name="MainColor"/>
-                                                                                        </buttonConfiguration>
-                                                                                    </button>
-                                                                                </subviews>
-                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                <constraints>
-                                                                                    <constraint firstItem="3fW-3D-WGd" firstAttribute="width" secondItem="3vz-kb-wru" secondAttribute="width" multiplier="0.9" id="1Ty-X8-0ZK"/>
-                                                                                    <constraint firstItem="3fW-3D-WGd" firstAttribute="centerY" secondItem="3vz-kb-wru" secondAttribute="centerY" id="T19-sC-Rz0"/>
-                                                                                    <constraint firstItem="3fW-3D-WGd" firstAttribute="centerX" secondItem="3vz-kb-wru" secondAttribute="centerX" id="stJ-YK-c6y"/>
-                                                                                </constraints>
-                                                                            </view>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xpo-Sa-HKY">
+                                                                                <rect key="frame" x="0.0" y="14" width="107.5" height="31"/>
+                                                                                <color key="backgroundColor" name="MainColor"/>
+                                                                                <state key="normal" title="Button"/>
+                                                                                <buttonConfiguration key="configuration" style="plain" title="Income">
+                                                                                    <color key="baseForegroundColor" name="BackgroundColor"/>
+                                                                                </buttonConfiguration>
+                                                                                <connections>
+                                                                                    <action selector="incomeTransactionType:" destination="nxl-FD-uo9" eventType="touchUpInside" id="ARq-0t-gqu"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOG-9G-gZW">
+                                                                                <rect key="frame" x="122.5" y="14" width="108" height="31"/>
+                                                                                <color key="backgroundColor" name="BackgroundColor"/>
+                                                                                <state key="normal" title="Button"/>
+                                                                                <buttonConfiguration key="configuration" style="plain" title="Saving">
+                                                                                    <color key="baseForegroundColor" name="MainColor"/>
+                                                                                </buttonConfiguration>
+                                                                                <connections>
+                                                                                    <action selector="savingTransactionType:" destination="nxl-FD-uo9" eventType="touchUpInside" id="CN8-My-RAK"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qwx-la-BcU">
+                                                                                <rect key="frame" x="245.5" y="14" width="107.5" height="31"/>
+                                                                                <color key="backgroundColor" name="BackgroundColor"/>
+                                                                                <state key="normal" title="Button"/>
+                                                                                <buttonConfiguration key="configuration" style="plain" title="Outcome">
+                                                                                    <color key="baseForegroundColor" name="MainColor"/>
+                                                                                </buttonConfiguration>
+                                                                                <connections>
+                                                                                    <action selector="outcomeTransactionType:" destination="nxl-FD-uo9" eventType="touchUpInside" id="ztR-of-eSH"/>
+                                                                                </connections>
+                                                                            </button>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </stackView>
@@ -954,6 +930,9 @@
                                                         <buttonConfiguration key="configuration" style="plain" title="Add">
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="addNewTransaction:" destination="nxl-FD-uo9" eventType="touchUpInside" id="Kmn-Hz-v1m"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -992,15 +971,30 @@
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="Oih-Xq-is3"/>
                     <connections>
-                        <outlet property="IncomeButton" destination="4Mi-iv-iuU" id="UeY-0R-2gi"/>
+                        <outlet property="IncomeButton" destination="Xpo-Sa-HKY" id="kqW-eD-9St"/>
                         <outlet property="addTransactionView" destination="APe-li-iKx" id="wLv-4P-4xY"/>
-                        <outlet property="outcomeButton" destination="3fW-3D-WGd" id="OgC-KE-XCz"/>
-                        <outlet property="savingButton" destination="tR7-eH-CjD" id="AZm-F1-N4B"/>
+                        <outlet property="outcomeButton" destination="Qwx-la-BcU" id="kgm-Et-GKK"/>
+                        <outlet property="savingButton" destination="fOG-9G-gZW" id="ivU-pt-8Zx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Zx-LL-uMX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4069.5652173913045" y="-385.04464285714283"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ATa-7J-SSq">
+            <objects>
+                <viewController id="yGe-Yt-EBo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oTe-Z5-TUa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="utk-Bg-n3g"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rKq-7g-f5d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4774" y="-97"/>
         </scene>
         <!--Settings-->
         <scene sceneID="hi4-u7-1Kp">

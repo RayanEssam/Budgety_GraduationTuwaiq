@@ -7,19 +7,28 @@
 
 import Foundation
 
-class Transaction {
+struct Transaction {
     
-    static var sharedTransaction = Transaction()
     
-    private var  purpose : String = ""
-    private var timeStamp : Date  = Date()
-    private var transactionType : TransactionType  = TransactionType.Income
-    private var amount  : Float = 0
-    private var Description : String = ""
+     var  purpose : String
+     var timeStamp : Date
+     var transactionTypeString : String
+     var amount  : Float
+     var description : String
 
     
-    private init (){
-        
-    }
+//    init (purpose : String , timeStamp : Date , transactionType : TransactionType ,
+//    amount : Float , description : String  ){
+//
+//        self.purpose = purpose
+//        self.timeStamp = timeStamp
+//        self.transactionType = transactionType
+//        self.amount = amount
+//        self.description = description
+//
+//    }
+    
+    
+    
     
 }

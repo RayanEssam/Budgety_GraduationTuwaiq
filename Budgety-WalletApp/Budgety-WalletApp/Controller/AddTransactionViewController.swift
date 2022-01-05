@@ -15,6 +15,8 @@ class AddTransactionViewController: UIViewController {
     @IBOutlet var savingButton: UIButton!
     @IBOutlet var outcomeButton: UIButton!
     
+    var transactionType = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +27,58 @@ class AddTransactionViewController: UIViewController {
         outcomeButton.layer.cornerRadius = 15
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func incomeTransactionType(_ sender: Any) {
+        
+        IncomeButton.backgroundColor =  UIColor.appColor(.mainColor)
+        IncomeButton.titleLabel?.textColor =  UIColor.appColor(.backgroundColor)
+        
+        outcomeButton.backgroundColor =  UIColor.appColor(.backgroundColor)
+        outcomeButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
+        
+        savingButton.backgroundColor =  UIColor.appColor(.backgroundColor)
+        savingButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
+        
     }
-    */
+    
+    
+    @IBAction func savingTransactionType(_ sender: Any) {
+        
+        savingButton.backgroundColor =  UIColor.appColor(.mainColor)
+        savingButton.titleLabel?.textColor =  UIColor.appColor(.backgroundColor)
+        
+        IncomeButton.backgroundColor =  UIColor.appColor(.backgroundColor)
+        IncomeButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
+            
 
+        outcomeButton.backgroundColor =  UIColor.appColor(.backgroundColor)
+        outcomeButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
+        
+    }
+    
+    @IBAction func outcomeTransactionType(_ sender: Any) {
+
+        outcomeButton.backgroundColor =  UIColor.appColor(.mainColor)
+        outcomeButton.titleLabel?.textColor =  UIColor.appColor(.backgroundColor)
+       
+
+        
+        IncomeButton.backgroundColor =  UIColor.appColor(.backgroundColor)
+        IncomeButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
+
+        savingButton.backgroundColor =  UIColor.appColor(.backgroundColor)
+        savingButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
+        
+    }
+    
+    
+
+    
+    @IBAction func addNewTransaction(_ sender: Any) {
+   
+        DatabaseHandler.shared.addNewTransaction()
+    
+    }
+    
+ 
+    
 }

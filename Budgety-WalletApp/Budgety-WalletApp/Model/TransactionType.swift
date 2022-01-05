@@ -6,10 +6,12 @@
 //
 
 import Foundation
-enum TransactionType {
+enum TransactionType : String{
     
-    case Income
-    case Saving
-    case Outcome
+    case Income = "Income"
+    case Saving = "Saving"
+    case Outcome = "Outcome"
 
+    
+    
 }

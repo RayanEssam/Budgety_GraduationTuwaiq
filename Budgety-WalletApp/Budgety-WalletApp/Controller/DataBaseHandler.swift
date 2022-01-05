@@ -35,12 +35,15 @@ class DatabaseHandler {
                                                     "name" : "\(name)",
                                                     "phone": "\(phonNumber)",
                                                     "email": "\(email)",
-                                                    "balance": 0 as! Float
+                                                    "balance": 0.0
                                       
                                                        
                                                    ])
                                { error in
                                        if error == nil {
+                                           User.shared.userEmail = email
+                                           self.createUserWallet()
+
                                            print("New document has been created...")
                                        } else {
                                            print("error\(error!.localizedDescription)")
@@ -82,7 +85,6 @@ class DatabaseHandler {
                                   User.shared.userEmail = email
                                   User.shared.userPhone = phone
                                   User.shared.userBalance = balance
-                                  
                                  completion(error)
                                   
                               } else {
@@ -98,10 +100,65 @@ class DatabaseHandler {
     }
     
     
+    func createUserWallet() {
+        
+        let newRawWallet : [String : Any] = [
+         
+            "TotalGain" : 0 ,
+            "TotalSpending" : 0,
+//            "Transaction" : Transaction(purpose: "test", timeStamp: Date(), transactionTypeString: TransactionType.Income.rawValue, amount: 29, description: "Nothing")
+        ]
+        
+        db.collection("Wallet").document(User.shared.userEmail).setData(newRawWallet) { error in
+            if error == nil {
+                
+                print("adding new wallet")
+                
+            }
+        }
+        
+//        db.collection("Wallet").addDocument(data: newRawWallet) { error in
+//
+//
+//
+//
+//        }
+        
+        
+        
+        
+    }
     
-//    func add(<#parameters#>) -> <#return type#> {
-//        <#function body#>
-//    }
+    
+    func addNewTransaction()  {
+        
+        let transaction = Transaction(purpose: "test", timeStamp: Date(), transactionTypeString: TransactionType.Income.rawValue, amount: 29, description: "Nothing")
+        
+        let tarnsactionDictionary : [String : Any] =  [
+        
+            "Purpose" : transaction.purpose,
+            "TimeStamp" : transaction.timeStamp,
+            "TransactionTypeS" : transaction.transactionTypeString,
+            "Amount" : transaction.amount,
+            "Description" : transaction.description
+            
+            
+        
+        ]
+        
+        db.collection("Wallet").document(User.shared.userEmail).collection("Transaction")
+            .addDocument(data: tarnsactionDictionary) { error in
+            
+                if error == nil {
+                    
+                    print("New Transaction is added")
+                    
+                }
+            
+        }
+        
+        
+    }
     
     
     
