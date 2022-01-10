@@ -14,9 +14,12 @@ class User {
     private var name : String = ""
     private var email : String = ""
     private var phone : String = ""
-    private  var balance : Float = 0
     private var wallet : Wallet? = nil
-   private init(){
+    private var savingWallet : [SavingWallet]? = nil
+    
+    
+    
+    private init(){
         
     }
     
@@ -48,15 +51,6 @@ class User {
            }
        }
     
-    var userBalance: Float {
-           get {
-               return balance
-           }
-           set (newBalance) {
-               balance = newBalance
-           }
-       }
-    
     var userWallet : Wallet?{
         
         get {
@@ -66,6 +60,27 @@ class User {
             wallet = newWallet
         }
     }
+    
+    
+    var userSavingWallet : [SavingWallet]?{
+        
+        get {
+            return savingWallet
+        }
+        
+        set (newSavingWallet) {
+            savingWallet = newSavingWallet
+        }
+    }
+    
+    
+    func addNewSavingWallet(newSavingWallet : SavingWallet)  {
+        
+        
+        savingWallet?.append(newSavingWallet)
+        
+    }
+    
     
     
    }

@@ -8,10 +8,8 @@
 import Foundation
 
 struct Wallet {
-    
     var transactions : [Transaction] = []
     var totalGain : Float
     var totalSpending : Float
-    
-    
+    var Balance : Float
 }

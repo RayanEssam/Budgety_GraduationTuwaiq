@@ -7,25 +7,81 @@
 
 import UIKit
 
-class AddTransactionViewController: UIViewController {
+class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet var addTransactionView: UIView!
-    
     @IBOutlet var IncomeButton: UIButton!
     @IBOutlet var savingButton: UIButton!
     @IBOutlet var outcomeButton: UIButton!
+    @IBOutlet var savingWalletView: UIView!
+    @IBOutlet var WalletPickerLabel: UILabel!
     
-    var transactionType = 0
+    @IBOutlet var addTransactionButton: UIButton!
+    @IBOutlet var pickerLaber: UILabel!
+    @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var transactionDescreptionTextField: UITextField!
+//    @IBOutlet var porpusePicker: UIPickerView!
+    
+    @IBOutlet var pickerTextField: UITextField!
+    
+    @IBOutlet var transactionAmountTextField: UITextField!
     
     
+    var purpose = ["Salary" , "Gift", "Qattah", "Stocks", "Trading"]
+    let incomePurpose = ["Salary" , "Gift", "Qattah", "Stocks", "Trading"]
+    let outcomePurpose = ["Grocery" , "Bills", "My Qattah", "Food"]
+
+    var saving = ["New Macbook" , "New Range Rover"]
+    
+    var transactionType = "Income"
+    
+    var porpusePicker = UIPickerView()
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addTransactionView.layer.cornerRadius = 15
-        IncomeButton.layer.cornerRadius = 15
-        savingButton.layer.cornerRadius = 15
-        outcomeButton.layer.cornerRadius = 15
+        addTransactionView.setCornerRadius()
+        IncomeButton.setCornerRadius()
+        savingButton.setCornerRadius()
+        outcomeButton.setCornerRadius()
+        addTransactionButton.setCornerRadius()
+        
+        datePicker.semanticContentAttribute = .forceRightToLeft
+        datePicker.subviews.first?.semanticContentAttribute = .forceRightToLeft
+//        porpusePicker.
+        porpusePicker.dataSource = self
+        porpusePicker.delegate = self
+        
+        
+        pickerTextField.inputView = porpusePicker
+        pickerTextField.textAlignment = .left
+        
+        
     }
+    
+    
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return purpose.count
+    
+    
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return purpose[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        pickerTextField.text = purpose[row]
+        pickerTextField.resignFirstResponder()
+        
+    }
+    
     
     @IBAction func incomeTransactionType(_ sender: Any) {
         
@@ -34,10 +90,15 @@ class AddTransactionViewController: UIViewController {
         
         outcomeButton.backgroundColor =  UIColor.appColor(.backgroundColor)
         outcomeButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
-        
+
         savingButton.backgroundColor =  UIColor.appColor(.backgroundColor)
         savingButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
-        
+//        savingWalletView.isHidden = true
+//        WalletPickerLabel.isHidden = true
+        transactionType = "Income"
+        purpose = incomePurpose
+        pickerTextField.text = purpose[0]
+        pickerLaber.text = "Purpose"
     }
     
     
@@ -47,12 +108,21 @@ class AddTransactionViewController: UIViewController {
         savingButton.titleLabel?.textColor =  UIColor.appColor(.backgroundColor)
         
         IncomeButton.backgroundColor =  UIColor.appColor(.backgroundColor)
-        IncomeButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
-            
+        IncomeButton.titleLabel!.textColor =  UIColor.appColor(.mainColor)
+//        IncomeButton.titleLabel!.textColor = .gray
 
         outcomeButton.backgroundColor =  UIColor.appColor(.backgroundColor)
         outcomeButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
+        transactionType = "Saving"
+        purpose = saving
+        pickerLaber.text = "Wallet"
+        pickerTextField.text = purpose[0]
+
         
+        
+//        savingWalletView.isHidden = false
+//        WalletPickerLabel.isHidden = false
+
     }
     
     @IBAction func outcomeTransactionType(_ sender: Any) {
@@ -60,7 +130,6 @@ class AddTransactionViewController: UIViewController {
         outcomeButton.backgroundColor =  UIColor.appColor(.mainColor)
         outcomeButton.titleLabel?.textColor =  UIColor.appColor(.backgroundColor)
        
-
         
         IncomeButton.backgroundColor =  UIColor.appColor(.backgroundColor)
         IncomeButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
@@ -68,14 +137,69 @@ class AddTransactionViewController: UIViewController {
         savingButton.backgroundColor =  UIColor.appColor(.backgroundColor)
         savingButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
         
+        transactionType = "Outcome"
+//        savingWalletView.isHidden = true
+//        WalletPickerLabel.isHidden = true
+        purpose = outcomePurpose
+        pickerLaber.text = "Purpose"
+        pickerTextField.text = purpose[0]
     }
     
     
 
     
     @IBAction func addNewTransaction(_ sender: Any) {
-   
-        DatabaseHandler.shared.addNewTransaction()
+        
+        transactionDescreptionTextField.checkEmptyInput { emptyDescreptionResult in
+            
+            if emptyDescreptionResult {
+                transactionDescreptionTextField.invalidInput()
+                
+            }else{
+                transactionDescreptionTextField.validInput()
+
+                transactionAmountTextField.checkEmptyInput { emptyResult in
+                    
+                    if emptyResult {
+                        
+                        transactionAmountTextField.invalidInput()
+                        
+                    }else{
+                        
+                        transactionAmountTextField.validInput()
+                        
+                        let purprose = "Salary"
+                        let descreption = transactionDescreptionTextField.text!
+                        let amount = transactionAmountTextField.text!
+                        
+                        let transation = Transaction(purpose: purprose, timeStamp: datePicker.date, transactionTypeString: transactionType, amount: Float(amount) ?? 0, description: descreption)
+                        
+                        
+                        DatabaseHandler.shared.addNewTransaction(transaction: transation){ error in
+                            
+                            if error == nil {
+                                self.dismiss(animated: true, completion: nil)
+                                
+                            }
+                            
+                            
+                        }
+
+                        
+                    }
+                    
+                }
+                
+                
+            }
+            
+            
+            
+            
+        }
+    
+        
+        
     
     }
     

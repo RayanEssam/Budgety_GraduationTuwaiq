@@ -14,12 +14,14 @@ class SavingTableViewCell: UITableViewCell {
     @IBOutlet var targetSavingAmount: UILabel!
     @IBOutlet var savingMainView: UIView!
     
+    @IBOutlet var walletSlider: UISlider!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        savingMainView.layer.cornerRadius = 15
+        walletSlider.isEnabled = false
+        savingMainView.setCornerRadius()
 
     }
 

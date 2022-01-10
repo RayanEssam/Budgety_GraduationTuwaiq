@@ -29,11 +29,11 @@ extension WelcomeViewController {
     func setUpUiElemenets()  {
         
         // Get started button
-        getStartedButton.layer.cornerRadius = 15
+        getStartedButton.setCornerRadius()
         
         
         // Set up log in button
-        LogInButton.layer.cornerRadius = 15
+        LogInButton.setCornerRadius()
         LogInButton.backgroundColor = .white
         LogInButton.layer.borderWidth = 2
         LogInButton.layer.borderColor =  UIColor.appColor(.mainColor)?.cgColor

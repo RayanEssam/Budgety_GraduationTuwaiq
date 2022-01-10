@@ -9,6 +9,7 @@ import UIKit
 
 class SavingViewController: UIViewController {
     
+    @IBOutlet var addTrasactionFABButton: UIButton!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var savingNavigationController: UINavigationBar!
     @IBOutlet var mainSavingView: UIView!
@@ -16,8 +17,19 @@ class SavingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        addTrasactionFABButton.layer.cornerRadius = addTrasactionFABButton.frame.width/2
         savingNavigationController.shadowImage = UIImage()
         savingNavigationController.backIndicatorImage = UIImage()
+        
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        
+        DatabaseHandler.shared.getAllSavingWallet()
+        
     }
     
 

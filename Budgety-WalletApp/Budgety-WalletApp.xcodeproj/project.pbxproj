@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6EEA94380A185F5C0566AD56 /* Pods_Budgety_WalletApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB0F30AD056ED0655A60077 /* Pods_Budgety_WalletApp.framework */; };
+		CF01F17B278B02BF00A5BA7C /* AddWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF01F17A278B02BF00A5BA7C /* AddWalletViewController.swift */; };
+		CF01F17D278B27C600A5BA7C /* SavingWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF01F17C278B27C600A5BA7C /* SavingWallet.swift */; };
+		CF07F98327874D05005848D3 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F98227874D05005848D3 /* UIViewExtension.swift */; };
+		CF07F98527874E9C005848D3 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F98427874E9C005848D3 /* UIColorExtension.swift */; };
 		CF0A15E727841CC800D390A0 /* SavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A15E627841CC800D390A0 /* SavingViewController.swift */; };
 		CF0A15E92784338800D390A0 /* SavingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A15E82784338800D390A0 /* SavingTableViewCell.swift */; };
 		CF387A51278181E000301100 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A50278181E000301100 /* AppDelegate.swift */; };
@@ -18,12 +22,12 @@
 		CF387A5D278181E600301100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF387A5C278181E600301100 /* Assets.xcassets */; };
 		CF387A60278181E600301100 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF387A5E278181E600301100 /* LaunchScreen.storyboard */; };
 		CF387A682781856400301100 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF387A672781856400301100 /* GoogleService-Info.plist */; };
-		CF387A6D278199C500301100 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A6C278199C500301100 /* CustomColors.swift */; };
+		CF387A6D278199C500301100 /* EnumAssetsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A6C278199C500301100 /* EnumAssetsColor.swift */; };
 		CF387A6F2781B4AB00301100 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A6E2781B4AB00301100 /* GetStartedViewController.swift */; };
 		CF387A7127820E5C00301100 /* UITextFieldExtension .swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A7027820E5B00301100 /* UITextFieldExtension .swift */; };
 		CF98D2FD2784C62800D78251 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98D2FC2784C62800D78251 /* User.swift */; };
 		CF98D2FF2784DAE400D78251 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98D2FE2784DAE400D78251 /* Transaction.swift */; };
-		CF98D3012784DB6800D78251 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98D3002784DB6800D78251 /* TransactionType.swift */; };
+		CF98D3012784DB6800D78251 /* EnumTransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98D3002784DB6800D78251 /* EnumTransactionType.swift */; };
 		CF9D29852782CDB900AA6F1D /* DataBaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D29842782CDB900AA6F1D /* DataBaseHandler.swift */; };
 		CF9D29872782E92100AA6F1D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9D29862782E92100AA6F1D /* HomeViewController.swift */; };
 		CFAC03E727835A7100180827 /* TapBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAC03E627835A7100180827 /* TapBar.swift */; };
@@ -36,6 +40,10 @@
 /* Begin PBXFileReference section */
 		B3485C0E4A14D51A204F53C4 /* Pods-Budgety-WalletApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgety-WalletApp.release.xcconfig"; path = "Target Support Files/Pods-Budgety-WalletApp/Pods-Budgety-WalletApp.release.xcconfig"; sourceTree = "<group>"; };
 		C6AD7A9D7D25111EBE9E3ACC /* Pods-Budgety-WalletApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Budgety-WalletApp.debug.xcconfig"; path = "Target Support Files/Pods-Budgety-WalletApp/Pods-Budgety-WalletApp.debug.xcconfig"; sourceTree = "<group>"; };
+		CF01F17A278B02BF00A5BA7C /* AddWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWalletViewController.swift; sourceTree = "<group>"; };
+		CF01F17C278B27C600A5BA7C /* SavingWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingWallet.swift; sourceTree = "<group>"; };
+		CF07F98227874D05005848D3 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		CF07F98427874E9C005848D3 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		CF0A15E627841CC800D390A0 /* SavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingViewController.swift; sourceTree = "<group>"; };
 		CF0A15E82784338800D390A0 /* SavingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingTableViewCell.swift; sourceTree = "<group>"; };
 		CF387A4D278181E000301100 /* Budgety-WalletApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Budgety-WalletApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,12 +56,12 @@
 		CF387A5F278181E600301100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF387A61278181E600301100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF387A672781856400301100 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		CF387A6C278199C500301100 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		CF387A6C278199C500301100 /* EnumAssetsColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumAssetsColor.swift; sourceTree = "<group>"; };
 		CF387A6E2781B4AB00301100 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		CF387A7027820E5B00301100 /* UITextFieldExtension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextFieldExtension .swift"; sourceTree = "<group>"; };
 		CF98D2FC2784C62800D78251 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CF98D2FE2784DAE400D78251 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		CF98D3002784DB6800D78251 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
+		CF98D3002784DB6800D78251 /* EnumTransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTransactionType.swift; sourceTree = "<group>"; };
 		CF9D29842782CDB900AA6F1D /* DataBaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseHandler.swift; sourceTree = "<group>"; };
 		CF9D29862782E92100AA6F1D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CFAC03E627835A7100180827 /* TapBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBar.swift; sourceTree = "<group>"; };
@@ -93,6 +101,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF07F98127874CD9005848D3 /* Extenstion */ = {
+			isa = PBXGroup;
+			children = (
+				CF387A7027820E5B00301100 /* UITextFieldExtension .swift */,
+				CF07F98227874D05005848D3 /* UIViewExtension.swift */,
+				CF07F98427874E9C005848D3 /* UIColorExtension.swift */,
+			);
+			path = Extenstion;
+			sourceTree = "<group>";
+		};
 		CF387A44278181E000301100 = {
 			isa = PBXGroup;
 			children = (
@@ -130,11 +148,12 @@
 		CF387A6927818B2E00301100 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CF387A6C278199C500301100 /* CustomColors.swift */,
+				CF387A6C278199C500301100 /* EnumAssetsColor.swift */,
 				CF98D2FC2784C62800D78251 /* User.swift */,
 				CF98D2FE2784DAE400D78251 /* Transaction.swift */,
-				CF98D3002784DB6800D78251 /* TransactionType.swift */,
+				CF98D3002784DB6800D78251 /* EnumTransactionType.swift */,
 				CFB39B622785788900217399 /* Wallet.swift */,
+				CF01F17C278B27C600A5BA7C /* SavingWallet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -151,9 +170,9 @@
 		CF387A6B27818B3B00301100 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CF07F98127874CD9005848D3 /* Extenstion */,
 				CF387A54278181E000301100 /* WelcomeViewController.swift */,
 				CF387A6E2781B4AB00301100 /* GetStartedViewController.swift */,
-				CF387A7027820E5B00301100 /* UITextFieldExtension .swift */,
 				CF9D29842782CDB900AA6F1D /* DataBaseHandler.swift */,
 				CF9D29862782E92100AA6F1D /* HomeViewController.swift */,
 				CFAC03E627835A7100180827 /* TapBar.swift */,
@@ -162,6 +181,7 @@
 				CFAC03EC2783711C00180827 /* TransactionTableViewCell.swift */,
 				CF0A15E627841CC800D390A0 /* SavingViewController.swift */,
 				CF0A15E82784338800D390A0 /* SavingTableViewCell.swift */,
+				CF01F17A278B02BF00A5BA7C /* AddWalletViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -284,16 +304,20 @@
 			files = (
 				CF0A15E727841CC800D390A0 /* SavingViewController.swift in Sources */,
 				CF387A55278181E000301100 /* WelcomeViewController.swift in Sources */,
-				CF387A6D278199C500301100 /* CustomColors.swift in Sources */,
+				CF387A6D278199C500301100 /* EnumAssetsColor.swift in Sources */,
+				CF01F17B278B02BF00A5BA7C /* AddWalletViewController.swift in Sources */,
 				CF0A15E92784338800D390A0 /* SavingTableViewCell.swift in Sources */,
 				CF98D2FD2784C62800D78251 /* User.swift in Sources */,
 				CF387A51278181E000301100 /* AppDelegate.swift in Sources */,
 				CFB39B632785788900217399 /* Wallet.swift in Sources */,
 				CF98D2FF2784DAE400D78251 /* Transaction.swift in Sources */,
+				CF01F17D278B27C600A5BA7C /* SavingWallet.swift in Sources */,
+				CF07F98527874E9C005848D3 /* UIColorExtension.swift in Sources */,
 				CFAC03E927835C9A00180827 /* AddTransactionViewController.swift in Sources */,
 				CF9D29852782CDB900AA6F1D /* DataBaseHandler.swift in Sources */,
+				CF07F98327874D05005848D3 /* UIViewExtension.swift in Sources */,
 				CF387A6F2781B4AB00301100 /* GetStartedViewController.swift in Sources */,
-				CF98D3012784DB6800D78251 /* TransactionType.swift in Sources */,
+				CF98D3012784DB6800D78251 /* EnumTransactionType.swift in Sources */,
 				CFAC03ED2783711C00180827 /* TransactionTableViewCell.swift in Sources */,
 				CF9D29872782E92100AA6F1D /* HomeViewController.swift in Sources */,
 				CF387A7127820E5C00301100 /* UITextFieldExtension .swift in Sources */,

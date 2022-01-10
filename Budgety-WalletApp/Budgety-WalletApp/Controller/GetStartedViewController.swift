@@ -292,11 +292,11 @@ extension GetStartedViewController {
         
         
         // logIn Button
-        logInButton.layer.cornerRadius = 15
+        logInButton.setCornerRadius()
         
         
         // signUp button
-        signUpButton.layer.cornerRadius = 15
+        signUpButton.setCornerRadius()
         
         
     }

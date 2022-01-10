@@ -20,7 +20,7 @@ class TransactionTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        transactionInnerCard.layer.cornerRadius = 15
+        transactionInnerCard.setCornerRadius()
     }
   
     

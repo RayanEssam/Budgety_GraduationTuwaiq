@@ -8,27 +8,11 @@
 import Foundation
 
 struct Transaction {
-    
-    
+  
      var  purpose : String
      var timeStamp : Date
      var transactionTypeString : String
-     var amount  : Float
+     var amount : Float
      var description : String
-
-    
-//    init (purpose : String , timeStamp : Date , transactionType : TransactionType ,
-//    amount : Float , description : String  ){
-//
-//        self.purpose = purpose
-//        self.timeStamp = timeStamp
-//        self.transactionType = transactionType
-//        self.amount = amount
-//        self.description = description
-//
-//    }
-    
-    
-    
-    
+   
 }

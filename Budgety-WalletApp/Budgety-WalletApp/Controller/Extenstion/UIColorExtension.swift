@@ -1,19 +1,12 @@
 //
-//  CustomColors.swift
+//  UIColorExtension.swift
 //  Budgety-WalletApp
 //
-//  Created by Rayan Taj on 02/01/2022.
+//  Created by Rayan Taj on 06/01/2022.
 //
 
 import Foundation
 import UIKit
-
-enum AssetsColor {
-   case mainColor
-   case secondaryColor
-case backgroundColor
-
-}
 
 extension UIColor {
     
@@ -21,8 +14,8 @@ extension UIColor {
         switch name {
         case .mainColor:
             return UIColor(named: "MainColor")
-        case .secondaryColor:
-            return UIColor(named: "")
+        case .redMainColor:
+            return UIColor(named: "RedMainColor")
         case .backgroundColor :
             return UIColor(named: "BackgroundColor")
 

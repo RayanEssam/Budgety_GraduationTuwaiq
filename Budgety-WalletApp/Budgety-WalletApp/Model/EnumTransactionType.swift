@@ -11,7 +11,5 @@ enum TransactionType : String{
     case Income = "Income"
     case Saving = "Saving"
     case Outcome = "Outcome"
-
-    
-    
+   
 }
