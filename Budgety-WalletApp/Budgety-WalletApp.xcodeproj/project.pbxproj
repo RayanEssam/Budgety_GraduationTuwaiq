@@ -13,6 +13,8 @@
 		CF01F17F278CACD500A5BA7C /* SharedWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF01F17E278CACD500A5BA7C /* SharedWallet.swift */; };
 		CF01F181278DA96400A5BA7C /* ApproveSavingWalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF01F180278DA96400A5BA7C /* ApproveSavingWalletTableViewCell.swift */; };
 		CF01F183278DAB1400A5BA7C /* UnApprovedSharedWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF01F182278DAB1400A5BA7C /* UnApprovedSharedWalletViewController.swift */; };
+		CF01F185278DF10F00A5BA7C /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF01F184278DF10F00A5BA7C /* UINavigationControllerExtension.swift */; };
+		CF01F188278DF2C000A5BA7C /* AddTransactionViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF01F187278DF2C000A5BA7C /* AddTransactionViewControllerDelegate.swift */; };
 		CF07F98327874D05005848D3 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F98227874D05005848D3 /* UIViewExtension.swift */; };
 		CF07F98527874E9C005848D3 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F98427874E9C005848D3 /* UIColorExtension.swift */; };
 		CF0A15E727841CC800D390A0 /* SavingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A15E627841CC800D390A0 /* SavingViewController.swift */; };
@@ -48,6 +50,8 @@
 		CF01F17E278CACD500A5BA7C /* SharedWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedWallet.swift; sourceTree = "<group>"; };
 		CF01F180278DA96400A5BA7C /* ApproveSavingWalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveSavingWalletTableViewCell.swift; sourceTree = "<group>"; };
 		CF01F182278DAB1400A5BA7C /* UnApprovedSharedWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnApprovedSharedWalletViewController.swift; sourceTree = "<group>"; };
+		CF01F184278DF10F00A5BA7C /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
+		CF01F187278DF2C000A5BA7C /* AddTransactionViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CF07F98227874D05005848D3 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		CF07F98427874E9C005848D3 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		CF0A15E627841CC800D390A0 /* SavingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingViewController.swift; sourceTree = "<group>"; };
@@ -107,14 +111,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CF07F98127874CD9005848D3 /* Extenstion */ = {
+		CF01F186278DF2A500A5BA7C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CF01F187278DF2C000A5BA7C /* AddTransactionViewControllerDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CF07F98127874CD9005848D3 /* Extenstions */ = {
 			isa = PBXGroup;
 			children = (
 				CF387A7027820E5B00301100 /* UITextFieldExtension .swift */,
 				CF07F98227874D05005848D3 /* UIViewExtension.swift */,
 				CF07F98427874E9C005848D3 /* UIColorExtension.swift */,
+				CF01F184278DF10F00A5BA7C /* UINavigationControllerExtension.swift */,
 			);
-			path = Extenstion;
+			path = Extenstions;
 			sourceTree = "<group>";
 		};
 		CF387A44278181E000301100 = {
@@ -177,7 +190,8 @@
 		CF387A6B27818B3B00301100 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CF07F98127874CD9005848D3 /* Extenstion */,
+				CF01F186278DF2A500A5BA7C /* Protocols */,
+				CF07F98127874CD9005848D3 /* Extenstions */,
 				CF387A54278181E000301100 /* WelcomeViewController.swift */,
 				CF387A6E2781B4AB00301100 /* GetStartedViewController.swift */,
 				CF9D29842782CDB900AA6F1D /* DataBaseHandler.swift */,
@@ -313,6 +327,7 @@
 			files = (
 				CF0A15E727841CC800D390A0 /* SavingViewController.swift in Sources */,
 				CF387A55278181E000301100 /* WelcomeViewController.swift in Sources */,
+				CF01F185278DF10F00A5BA7C /* UINavigationControllerExtension.swift in Sources */,
 				CF01F183278DAB1400A5BA7C /* UnApprovedSharedWalletViewController.swift in Sources */,
 				CF387A6D278199C500301100 /* EnumAssetsColor.swift in Sources */,
 				CF01F17B278B02BF00A5BA7C /* AddWalletViewController.swift in Sources */,
@@ -332,6 +347,7 @@
 				CF9D29872782E92100AA6F1D /* HomeViewController.swift in Sources */,
 				CF387A7127820E5C00301100 /* UITextFieldExtension .swift in Sources */,
 				CFAC03E727835A7100180827 /* TapBar.swift in Sources */,
+				CF01F188278DF2C000A5BA7C /* AddTransactionViewControllerDelegate.swift in Sources */,
 				CFAC03EB278362AA00180827 /* TabBarController.swift in Sources */,
 				CF01F181278DA96400A5BA7C /* ApproveSavingWalletTableViewCell.swift in Sources */,
 				CF01F17F278CACD500A5BA7C /* SharedWallet.swift in Sources */,

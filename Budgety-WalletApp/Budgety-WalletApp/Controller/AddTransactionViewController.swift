@@ -7,12 +7,8 @@
 
 import UIKit
 
-protocol AddTransactionViewControllerDelegate {
-    func finishedPassingData(transactionsArray : [Transaction])
-}
 
-
-class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddTransactionViewController: UIViewController {
     
     @IBOutlet var addTransactionView: UIView!
     @IBOutlet var IncomeButton: UIButton!
@@ -20,67 +16,36 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBOutlet var outcomeButton: UIButton!
     @IBOutlet var savingWalletView: UIView!
     @IBOutlet var WalletPickerLabel: UILabel!
-    
     @IBOutlet var addTransactionButton: UIButton!
     @IBOutlet var pickerLaber: UILabel!
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var transactionDescreptionTextField: UITextField!
-    //    @IBOutlet var porpusePicker: UIPickerView!
-    
     @IBOutlet var pickerTextField: UITextField!
-    
     @IBOutlet var transactionAmountTextField: UITextField!
-    let queue = OperationQueue()
-    
     
     var purpose = ["Salary" , "Gift", "Qattah", "Stocks", "Trading"]
     let incomePurpose = ["Salary" , "Gift", "Qattah", "Stocks", "Trading"]
     let outcomePurpose = ["Grocery" , "Bills", "My Qattah", "Food"]
-    
-    //    var saving = ["New Macbook" , "New Range Rover"]
+    let queue = OperationQueue()
     var savingDocumentIndex = 0
-    
     var transactionType = "Income"
-    
     var porpusePicker = UIPickerView()
-    
     var delegate : AddTransactionViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addTransactionView.setCornerRadius()
-        IncomeButton.setCornerRadius()
-        savingButton.setCornerRadius()
-        outcomeButton.setCornerRadius()
-        addTransactionButton.setCornerRadius()
-        
-        datePicker.semanticContentAttribute = .forceRightToLeft
-        datePicker.subviews.first?.semanticContentAttribute = .forceRightToLeft
-        //        porpusePicker.
-        porpusePicker.dataSource = self
-        porpusePicker.delegate = self
-        
-        
-        pickerTextField.inputView = porpusePicker
-        pickerTextField.textAlignment = .left
-        
-        
+        setUpUI()
+
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         
         
         User.shared.userSavingWallet?.removeAll()
         
         queue.waitUntilAllOperationsAreFinished()
-        
-        
-        
-        
-        
-        //        print("in saving vc : " ,User.shared.userSavingWallet)
-        
-        
+
         queue.addOperation {
             DatabaseHandler.shared.getSharedWallet { error in
                 
@@ -89,13 +54,10 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
             }
         }
         
-        
         queue.addOperation {
             DatabaseHandler.shared.getAllSavingWallet(){ error in
                 
-                
                 if error  == nil {
-                    
                     
                     self.savingDocumentIndex = 0
                 }
@@ -104,40 +66,9 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
                 
             }
         }
-        
-        
-        
-        
-    }
-    
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return purpose.count
-        
-        
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int
-    {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return purpose[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        pickerTextField.text = purpose[row]
-        
-        if transactionType == "Saving" {
             
-            savingDocumentIndex = row
-        }
-        pickerTextField.resignFirstResponder()
         
     }
-    
     
     @IBAction func incomeTransactionType(_ sender: Any) {
         
@@ -149,8 +80,8 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         savingButton.backgroundColor =  UIColor.appColor(.backgroundColor)
         savingButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
-        //        savingWalletView.isHidden = true
-        //        WalletPickerLabel.isHidden = true
+  
+        
         transactionType = "Income"
         purpose = incomePurpose
         pickerTextField.text = purpose[0]
@@ -159,7 +90,6 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
         addTransactionButton.isEnabled = true
     }
     
-    
     @IBAction func savingTransactionType(_ sender: Any) {
         
         savingButton.backgroundColor =  UIColor.appColor(.mainColor)
@@ -167,10 +97,11 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         IncomeButton.backgroundColor =  UIColor.appColor(.backgroundColor)
         IncomeButton.titleLabel!.textColor =  UIColor.appColor(.mainColor)
-        //        IncomeButton.titleLabel!.textColor = .gray
+
         
         outcomeButton.backgroundColor =  UIColor.appColor(.backgroundColor)
         outcomeButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
+        
         transactionType = "Saving"
         purpose = getWalletNames()
         pickerLaber.text = "Wallet"
@@ -185,13 +116,7 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
             pickerTextField.isEnabled = true
             addTransactionButton.isEnabled = true
         }
-        
-        
-        
-        
-        //        savingWalletView.isHidden = false
-        //        WalletPickerLabel.isHidden = false
-        
+    
     }
     
     @IBAction func outcomeTransactionType(_ sender: Any) {
@@ -207,18 +132,12 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
         savingButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
         
         transactionType = "Outcome"
-        //        savingWalletView.isHidden = true
-        //        WalletPickerLabel.isHidden = true
         purpose = outcomePurpose
-        
         pickerLaber.text = "Purpose"
         pickerTextField.text = purpose[0]
         pickerTextField.isEnabled = true
         addTransactionButton.isEnabled = true
     }
-    
-    
-    
     
     @IBAction func addNewTransaction(_ sender: Any) {
         
@@ -244,10 +163,7 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
                         let amount = transactionAmountTextField.text!
                         
                         let transation = Transaction(purpose: purprose, timeStamp: datePicker.date, transactionTypeString: transactionType, amount: Float(amount) ?? 0, description: descreption)
-                        
-                        
-                        
-                        
+
                         DatabaseHandler.shared.addNewTransaction(transaction: transation, savingDocumentIndex: savingDocumentIndex){ error in
                             
                             if error == nil {
@@ -283,7 +199,30 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         
     }
+      
+}
+
+// SetUp UI elements (customaization) + Functionality 
+extension AddTransactionViewController {
     
+    func setUpUI(){
+        
+        addTransactionView.setCornerRadius()
+        IncomeButton.setCornerRadius()
+        savingButton.setCornerRadius()
+        outcomeButton.setCornerRadius()
+        addTransactionButton.setCornerRadius()
+        
+        datePicker.semanticContentAttribute = .forceRightToLeft
+        datePicker.subviews.first?.semanticContentAttribute = .forceRightToLeft
+
+        porpusePicker.dataSource = self
+        porpusePicker.delegate = self
+        
+        
+        pickerTextField.inputView = porpusePicker
+        pickerTextField.textAlignment = .left
+    }
     
     func getWalletNames() -> [String] {
         
@@ -302,6 +241,36 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
         return names
         
     }
+}
+
+
+// Handle Purpose Picker
+extension AddTransactionViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return purpose.count
+        
+        
+    }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return purpose[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        pickerTextField.text = purpose[row]
+        
+        if transactionType == "Saving" {
+            
+            savingDocumentIndex = row
+        }
+        pickerTextField.resignFirstResponder()
+        
+    }
 }

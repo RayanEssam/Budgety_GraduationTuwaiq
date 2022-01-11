@@ -7,13 +7,8 @@
 
 import UIKit
 
-class HomeViewController: UIViewController , AddTransactionViewControllerDelegate  {
-    func finishedPassingData(transactionsArray: [Transaction]) {
-        
-        
-        transactionArray = transactionsArray
-        tableView.reloadData()
-    }
+class HomeViewController: UIViewController{
+
     
 
     @IBOutlet var addTransactionFABButton: UIButton!
@@ -29,27 +24,18 @@ class HomeViewController: UIViewController , AddTransactionViewControllerDelegat
     
     
     var transactionArray : [Transaction]? = nil
-    
-    
     let queue = OperationQueue()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.separatorColor = .clear
-        
-        transationSummaryView.setCornerRadius()
-        
-        addTransactionFABButton.layer.cornerRadius = addTransactionFABButton.frame.width/2
-        
-        homeNavigationBar.shadowImage = UIImage()
-        homeNavigationBar.backIndicatorImage = UIImage()
-        print("Here!")
+        setUpUI()
         
     }
 
     override func viewWillAppear(_ animated: Bool)  {
-    print("AM GONNA APPEAR AGAIN !!!")
+
         
         User.shared.userWallet?.transactions.removeAll()
         User.shared.userSavingWallet?.removeAll()
@@ -68,27 +54,14 @@ class HomeViewController: UIViewController , AddTransactionViewControllerDelegat
         queue.addOperation {
             DatabaseHandler.shared.getSharedWallet { error in
 
-
-//                self.savingWallet = User.shared.userSavingWallet ?? []
-//
-//                self.tableView.reloadData()
-
-                print("Gloabal : " , User.shared.userSavingWallet!)
-
             }
         }
-        
-        
+     
         queue.addOperation {
             DatabaseHandler.shared.getAllSavingWallet(){ error in
 
 
                 if error  == nil {
-
-
-//                    self.savingWallet = User.shared.userSavingWallet ?? []
-//                    self.tableView.reloadData()
-
                     print("Gloabal : " , User.shared.userSavingWallet!)
 
                 }
@@ -97,36 +70,37 @@ class HomeViewController: UIViewController , AddTransactionViewControllerDelegat
 
             }
         }
+     
         queue.addOperation{
 
+        
+        DatabaseHandler.shared.getUserWalletTransaction { error in
+        if error  == nil {
             
-            DatabaseHandler.shared.getUserWalletTransaction { error in
-            if error  == nil {
+            self.transactionArray?.removeAll()
+            self.transactionArray = User.shared.userWallet?.transactions
+
+            self.transactionArray?.reverse()
+            self.tableView.reloadData()
+
+            if self.transactionArray?.count == 0 {
+                self.tableView.isHidden = true
+                self.noTransactionsImage.isHidden = false
                 
-                self.transactionArray?.removeAll()
-                self.transactionArray = User.shared.userWallet?.transactions
-                print(self.transactionArray?.count)
-                self.transactionArray?.reverse()
-                self.tableView.reloadData()
-
-                if self.transactionArray?.count == 0 {
-                    self.tableView.isHidden == true
-                    self.noTransactionsImage.isHidden = false
-                    
-                }else{
-                    self.tableView.isHidden == false
-                    self.noTransactionsImage.isHidden = true
-                }
-
             }else{
-
-                print("error  all the transactions!")
-
+                self.tableView.isHidden = false
+                self.noTransactionsImage.isHidden = true
             }
+
+        }else{
+
+            print("error  all the transactions!")
+
         }
+    }
 
     }
-//
+       
         queue.addOperation {
 
             DatabaseHandler.shared.getUserWallet { error in
@@ -144,7 +118,6 @@ class HomeViewController: UIViewController , AddTransactionViewControllerDelegat
             }
         }
 
-//        print("UnApproved : " , User.shared.unApprovedSharedSavingWallet?.count)
         
         
         
@@ -164,30 +137,24 @@ class HomeViewController: UIViewController , AddTransactionViewControllerDelegat
     
 }
 
-extension UINavigationController {
-    func hideHairline() {
-        if let hairline = findHairlineImageViewUnder(navigationBar) {
-            hairline.isHidden = true
-        }
+// SetUp UI elements (customaization)
+extension HomeViewController {
+    
+    func setUpUI(){
+        
+        tableView.separatorColor = .clear
+        transationSummaryView.setCornerRadius()
+        
+        addTransactionFABButton.layer.cornerRadius = addTransactionFABButton.frame.width/2
+        
+        homeNavigationBar.shadowImage = UIImage()
+        homeNavigationBar.backIndicatorImage = UIImage()
+        
     }
-    func restoreHairline() {
-        if let hairline = findHairlineImageViewUnder(navigationBar) {
-            hairline.isHidden = false
-        }
-    }
-    func findHairlineImageViewUnder(_ view: UIView) -> UIImageView? {
-        if view is UIImageView && view.bounds.size.height <= 1.0 {
-            return view as? UIImageView
-        }
-        for subview in view.subviews {
-            if let imageView = self.findHairlineImageViewUnder(subview) {
-                return imageView
-            }
-        }
-        return nil
-    }
+    
 }
 
+// Handle table view
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -225,53 +192,23 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource
             
         }
         
-        
         return cell
-        
-        
-        
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 500
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return "Header"
-//    }
-    
-    
     
 }
-extension UIBarButtonItem {
-        
-    convenience init(icon: UIImage, badge: String, _ badgeBackgroundColor: UIColor = #colorLiteral(red: 0.9156965613, green: 0.380413115, blue: 0.2803866267, alpha: 1), target: Any? = self, action: Selector? = nil) {
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
-        imageView.image = icon
 
-        let label = UILabel(frame: CGRect(x: -8, y: -5, width: 18, height: 18))
-        label.text = badge
-        label.backgroundColor = badgeBackgroundColor
-        label.adjustsFontSizeToFitWidth = true
-        label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 10)
-        label.clipsToBounds = true
-        label.layer.cornerRadius = 18 / 2
-        label.textColor = .white
 
-        let buttonView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
-        buttonView.addSubview(imageView)
-        buttonView.addSubview(label)
-        buttonView.addGestureRecognizer(UITapGestureRecognizer.init(target: target, action: action))
-        self.init(customView: buttonView)
-    }
+// Handle Custome Delegate protocol.
+extension HomeViewController : AddTransactionViewControllerDelegate {
     
+    func finishedPassingData(transactionsArray: [Transaction]) {
+        transactionArray = transactionsArray
+        tableView.reloadData()
+    }
 }

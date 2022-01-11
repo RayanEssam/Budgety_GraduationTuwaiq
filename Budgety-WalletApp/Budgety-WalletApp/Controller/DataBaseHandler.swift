@@ -433,26 +433,35 @@ class DatabaseHandler {
     
     func getUnApprovedSahredWallet(completion: @escaping( Error?) -> Void){
         
-        db.collection("UserSahredWalletApprove").whereField("to", isEqualTo: User.shared.userEmail).whereField("approved", isEqualTo: false).getDocuments { querySnapshot, error in
+        db.collection("UserSahredWalletApprove").getDocuments { querySnapshot, error in
             
             if error == nil {
                 
-                if querySnapshot?.documents.count != 0 {
+//                if querySnapshot?.documents.count != 0 {
                     querySnapshot?.documents.forEach({ queryDocumentSnapshot in
                         
                         let isApproved = queryDocumentSnapshot.get("approved") as! Bool
-
-                        print("Not Approved")
-                        User.shared.unApprovedSharedSavingWallet?.append(SharedWallet(documentID: queryDocumentSnapshot.documentID, isApproved: isApproved, from: queryDocumentSnapshot.get("from") as! String, target: queryDocumentSnapshot.get("target") as! Float, walletName: queryDocumentSnapshot.get("walletName") as! String))
+                        var to = queryDocumentSnapshot.get("to") as! String
+                        to = to.trimmingCharacters(in: .whitespaces)
+                        let email = User.shared.userEmail.trimmingCharacters(in: .whitespaces)
+                        print("to : " , to , " - " , email )
+                        if isApproved == false && to == User.shared.userEmail {
+                            
+                            print("Not Approved")
+                            let temp = SharedWallet(documentID: queryDocumentSnapshot.documentID, isApproved: isApproved, from: queryDocumentSnapshot.get("from") as! String, target: queryDocumentSnapshot.get("target") as! Float, walletName: queryDocumentSnapshot.get("walletName") as! String)
+                            print("Temp : " , temp)
+                            User.shared.unApprovedSharedSavingWallet?.append(SharedWallet(documentID: queryDocumentSnapshot.documentID, isApproved: isApproved, from: queryDocumentSnapshot.get("from") as! String, target: queryDocumentSnapshot.get("target") as! Float, walletName: queryDocumentSnapshot.get("walletName") as! String))
+                        }
+                      
                         
                                 print("Check : " ,User.shared.unApprovedSharedSavingWallet )
                     })
                     
                     completion(error)
-                }else{
-                    completion(error)
-
-                }
+//                }else{
+//                    completion(error)
+//
+//                }
                 
                 
             }else{

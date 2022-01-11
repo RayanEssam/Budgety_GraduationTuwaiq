@@ -12,7 +12,8 @@ class UnApprovedSharedWalletViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     var unapprovedArray : [SharedWallet]? = nil
-    
+    let queue = OperationQueue()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,18 +28,23 @@ class UnApprovedSharedWalletViewController: UIViewController {
     
 
     override func viewWillAppear(_ animated: Bool) {
-        print("Hellos")
         
         User.shared.unApprovedSharedSavingWallet?.removeAll()
         unapprovedArray?.removeAll()
+        queue.waitUntilAllOperationsAreFinished()
         
-        DatabaseHandler.shared.getUnApprovedSahredWallet { error in
-            if error == nil {
-               print("Here \(User.shared.unApprovedSharedSavingWallet)")
-                self.unapprovedArray = User.shared.unApprovedSharedSavingWallet ?? []
-                self.tableView.reloadData()
+        queue.addOperation {
+            DatabaseHandler.shared.getUnApprovedSahredWallet { error in
+                if error == nil {
+                   print("Here \(User.shared.unApprovedSharedSavingWallet)")
+                    self.unapprovedArray = User.shared.unApprovedSharedSavingWallet!
+                    self.tableView.reloadData()
+                    print("Here 2 \(self.unapprovedArray!)")
+
+                }
             }
         }
+       
         
         
         
@@ -48,6 +54,18 @@ class UnApprovedSharedWalletViewController: UIViewController {
     
     
 
+}
+
+
+extension UnApprovedSharedWalletViewController : ApproveSavingWalletTableViewCellDelegate {
+    func finishedPassingData(approvalBool: Bool) {
+        if approvalBool {
+            print("Finished")
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    
 }
 
 extension UnApprovedSharedWalletViewController : UITableViewDelegate , UITableViewDataSource {
@@ -65,7 +83,7 @@ extension UnApprovedSharedWalletViewController : UITableViewDelegate , UITableVi
         cell.savingWalletEmailLabel.text = unapprovedArray![indexPath.row].from
         cell.savingWalletNameLabel.text = unapprovedArray![indexPath.row].walletName
         cell.unApprovedWallet = unapprovedArray![indexPath.row]
-        
+        cell.delegate = self
         return cell
         
     }

@@ -7,18 +7,21 @@
 
 import UIKit
 
+protocol ApproveSavingWalletTableViewCellDelegate {
+    func finishedPassingData(approvalBool : Bool)
+}
+
+
 class ApproveSavingWalletTableViewCell: UITableViewCell {
 
     @IBOutlet var innerCard: UIView!
     @IBOutlet var savingWalletNameLabel: UILabel!
-    
     @IBOutlet var savingWalletAmountLabel: UILabel!
-    
     @IBOutlet var savingWalletEmailLabel: UILabel!
-    
     @IBOutlet var savingWalletApproveButton: UIButton!
     
     var unApprovedWallet : SharedWallet? = nil
+    var delegate : ApproveSavingWalletTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,7 +42,9 @@ class ApproveSavingWalletTableViewCell: UITableViewCell {
             
             if error == nil {
                 print("Done")
-                self.isHidden = true
+                self.removeFromSuperview()
+                
+                self.delegate?.finishedPassingData(approvalBool: true)
             }
             
         }
