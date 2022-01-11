@@ -83,7 +83,7 @@ class DatabaseHandler {
                             User.shared.userPhone = phone
                             User.shared.userWallet = Wallet(transactions: [], totalGain: 0, totalSpending: 0, Balance: 0)
                             User.shared.userSavingWallet = []
-                            //                                  User.shared.userBalance = balance
+                            // User.shared.userBalance = balance
                             completion(error)
                             
                         } else {
@@ -259,18 +259,17 @@ class DatabaseHandler {
     
     
     
-    func addNewSoloWallet(soloWallet : SavingWallet , completion: @escaping( Error?) -> Void){
+    func addNewWallet(soloWallet : SavingWallet, uuid : String  , completion: @escaping( Error?) -> Void){
         
-        
-        db.collection("SavingsWallet").addDocument(data: [
+//        let uuid = UUID().uuidString
+        db.collection("SavingsWallet").document(uuid).setData([
             
             
             "email" : User.shared.userEmail,
             "name" : soloWallet.name,
-            "amount" : soloWallet.targetAmount,
             "currentAmount" : 0,
             "target" : soloWallet.targetAmount,
-            "emailList" : soloWallet.usersEmail,
+            "emailList" : soloWallet.type == "Solo" ? [] : soloWallet.usersEmail ,
             "type" : soloWallet.type
             
         ]) { error in
@@ -278,7 +277,39 @@ class DatabaseHandler {
             if error == nil {
                 
                 print("New solo added!")
-                completion(error)
+                
+                if soloWallet.type == "Shared" {
+                    
+                    soloWallet.usersEmail?.forEach({ email in
+                        
+                        self.db.collection("UserSahredWalletApprove").addDocument(data: [
+                        
+                            "walletName" : soloWallet.name,
+                            "target" : soloWallet.targetAmount,
+                            "approved" : false,
+                            "from" : User.shared.userEmail,
+                            "to" : email ,
+                            "documentID" : uuid
+                        ]){ error in
+                            
+                            if error == nil {
+                                print("No error")
+                                completion(error)
+                            }
+                            
+                        }
+                        
+                    })
+                    
+                   
+                    
+                    
+                }else{
+                    completion(error)
+                }
+                
+                
+                
                 
             }
             
@@ -289,14 +320,53 @@ class DatabaseHandler {
         
     }
     
-    func addNewSharedWallet(completion: @escaping( Error?) -> Void){
+    func getSharedWallet(completion: @escaping( Error?) -> Void){
+        
+        db.collection("UserSahredWalletApprove").whereField("to", isEqualTo: User.shared.userEmail).getDocuments { querySnapshot, error in
+            
+            
+            if error == nil {
+                
+                querySnapshot?.documents.forEach({ queryDocumentSnapshot in
+                    
+                    print(queryDocumentSnapshot.get("to"))
+                    
+                    let isApproved = queryDocumentSnapshot.get("approved") as! Bool
+                    
+                    if isApproved {
+                        print(" Approved")
+                        self.getSavingWalletByDocumentID(documentID: queryDocumentSnapshot.get("documentID") as! String){ WalletError in
+                            
+                            if WalletError == nil {
+                                
+                                completion(error)
+                                
+                            }
+                            
+                        }
+                    }else{
+                        
+                        print("Not Approved")
+                        User.shared.unApprovedSharedSavingWallet?.append(SharedWallet(documentID: queryDocumentSnapshot.get("documentID") as! String, isApproved: isApproved, from: queryDocumentSnapshot.get("from") as! String, target: queryDocumentSnapshot.get("target") as! Float, walletName: queryDocumentSnapshot.get("walletName") as! String))
+                        
+                        
+                        
+                    }
+                    
+                    
+                })
+                
+            }
+            
+        }
+        
         
     }
     
     
     
     
-    func getAllSavingWallet() {
+    func getAllSavingWallet(completion: @escaping( Error?) -> Void) {
         
         
         db.collection("SavingsWallet").whereField("email", isEqualTo: User.shared.userEmail).getDocuments { querySnapshot, error in
@@ -306,16 +376,54 @@ class DatabaseHandler {
                 
                 querySnapshot?.documents.forEach({ queryDocumentSnapshot in
                     
+                 
+                    let currentAmount = queryDocumentSnapshot.get("currentAmount") as! Float
+                    let type =  queryDocumentSnapshot.get("type") as! String
+                    let emailList : [String] = queryDocumentSnapshot.get("emailList") as! [String]
+                    let name = queryDocumentSnapshot.get("name") as! String
+                    let target = queryDocumentSnapshot.get("target") as! Float
                     
-                    print(queryDocumentSnapshot.get("amount"))
-                    print(queryDocumentSnapshot.get("currentAmount"))
-                    print(queryDocumentSnapshot.get("type") ?? "solo")
-
+                    
+                    let savingWallet = SavingWallet(name: name, targetAmount: target, currentAmount: currentAmount, type: type, usersEmail: emailList , documentID  : queryDocumentSnapshot.documentID)
+  
+                    User.shared.addNewSavingWallet(newSavingWallet: savingWallet)
+                    
+                    completion(error)
+                    
                 })
                 
             }
             
             
+            
+        }
+        
+        
+    }
+    
+    
+    
+    func getSavingWalletByDocumentID(documentID : String, completion: @escaping( Error?) -> Void){
+        
+        
+        db.collection("SavingsWallet").document(documentID).getDocument { documentSnapshot, error in
+            
+            if error == nil {
+                
+                let currentAmount = documentSnapshot?.get("currentAmount") as! Float
+                let type =  documentSnapshot?.get("type") as! String
+                let emailList : [String] = documentSnapshot?.get("emailList") as! [String]
+                let name = documentSnapshot?.get("name") as! String
+                let target = documentSnapshot?.get("target") as! Float
+                
+                
+                let savingWallet = SavingWallet(name: name, targetAmount: target, currentAmount: currentAmount, type: type, usersEmail: emailList , documentID : documentID)
+
+                User.shared.addNewSavingWallet(newSavingWallet: savingWallet)
+                
+                completion(error)
+                print("Sahred : " ,User.shared.userSavingWallet!)
+            }
             
         }
         

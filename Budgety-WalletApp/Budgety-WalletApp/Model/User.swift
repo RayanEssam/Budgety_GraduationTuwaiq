@@ -16,7 +16,7 @@ class User {
     private var phone : String = ""
     private var wallet : Wallet? = nil
     private var savingWallet : [SavingWallet]? = nil
-    
+    var unApprovedSharedSavingWallet : [SharedWallet]? = nil 
     
     
     private init(){

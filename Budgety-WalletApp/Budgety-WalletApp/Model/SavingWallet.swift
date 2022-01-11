@@ -16,6 +16,7 @@ struct SavingWallet {
     var currentAmount : Float
     var type : String
     var usersEmail : [String]?
+    var documentID : String 
     
     
    

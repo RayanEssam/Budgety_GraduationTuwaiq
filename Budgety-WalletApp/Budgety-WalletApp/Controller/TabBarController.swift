@@ -9,14 +9,16 @@ import UIKit
 
 class TabBarController: UITabBarController {
 
-    
+//    let queue = OperationQueue()
+
     override func viewDidLoad() {
         
-        print(User.shared.userEmail , " : Tap Bar ")
         
-        
-        print("Hello Index : " , self.selectedIndex)
         
     }
+    
+    
+    
+    
 
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 class AddWalletViewController: UIViewController {
-
+    
     @IBOutlet var addWalletView: UIView!
     @IBOutlet var soloWalletButton: UIButton!
     @IBOutlet var sharedWalletButton: UIButton!
@@ -17,11 +17,10 @@ class AddWalletViewController: UIViewController {
     @IBOutlet var sharedEmailWallet: UITextView!
     @IBOutlet var addWalletButton: UIButton!
     @IBOutlet var sharedEmailLabel: UILabel!
-    
-    
+    var walletType = "Solo"
+    var usersEmail : [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         soloWalletButton.setCornerRadius()
         sharedWalletButton.setCornerRadius()
         addWalletView.setCornerRadius()
@@ -36,7 +35,7 @@ class AddWalletViewController: UIViewController {
         sharedWalletButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
         sharedEmailLabel.isHidden = true
         sharedEmailWallet.isHidden = true
-
+        walletType = "Solo"
     }
     
     @IBAction func sharedActionButton(_ sender: Any) {
@@ -47,24 +46,78 @@ class AddWalletViewController: UIViewController {
         soloWalletButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
         sharedEmailLabel.isHidden = false
         sharedEmailWallet.isHidden = false
+        walletType = "Shared"
     }
     
     
     @IBAction func addWalletButton(_ sender: Any) {
         
-        DatabaseHandler.shared.addNewSoloWallet(soloWallet: SavingWallet(name: "New Car", targetAmount: 120000, currentAmount: 0, type: "Solo", usersEmail: [])) { error in
+        
+        
+        walletNameTextField.checkEmptyInput(action: { resultEmpty in
             
-            
-            if error == nil {
-                print("Done here!")
+            if resultEmpty {
+                walletNameTextField.invalidInput()
+                
+            }else{
+                
+                walletNameTextField.validInput()
+                walletTargetTextField.checkEmptyInput { emptyResult in
+                    
+                    if emptyResult{
+                        walletTargetTextField.invalidInput()
+                        
+                    }else{
+                        
+                        walletTargetTextField.validInput()
+                        print("Do it here!")
+                        
+                    
+                        if walletType == "Shared" {
+                            usersEmail = setEmailArray(text: sharedEmailWallet.text ?? "")
+                            print(usersEmail)
+                        }
+                        
+                        let uuid = UUID().uuidString
+                        DatabaseHandler.shared.addNewWallet(soloWallet: SavingWallet(name: walletNameTextField.text!, targetAmount: Float(walletTargetTextField.text!)! , currentAmount: 0, type: walletType, usersEmail: usersEmail, documentID: uuid), uuid: uuid) { error in
 
+
+                            if error == nil {
+                                print("Done here!")
+                            }
+
+                        }
+                        
+                        
+                        
+                    }
+                    
+                    
+                    
+                }
+                
             }
             
-        }
-        
-        
-        
+            
+        })
+    
     }
-  
+    
+    
+    func setEmailArray(text : String) -> [String] {
+        
+        let subStringArray = text.split(separator: ",")
+        var stringArray : [String] = []
+        
+        subStringArray.forEach { substring in
+            
+            stringArray.append(String(substring))
+            
+        }
 
+        return stringArray
+                
+    }
+    
+    
 }

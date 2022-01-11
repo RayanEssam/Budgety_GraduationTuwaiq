@@ -13,7 +13,9 @@ class SavingViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var savingNavigationController: UINavigationBar!
     @IBOutlet var mainSavingView: UIView!
-    
+    var savingWallet : [SavingWallet] = []
+    let queue = OperationQueue()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,8 +29,51 @@ class SavingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        savingWallet.removeAll()
+        User.shared.userSavingWallet?.removeAll()
         
-        DatabaseHandler.shared.getAllSavingWallet()
+        queue.waitUntilAllOperationsAreFinished()
+
+        
+        
+
+       
+//        print("in saving vc : " ,User.shared.userSavingWallet)
+
+       
+        queue.addOperation {
+            DatabaseHandler.shared.getSharedWallet { error in
+
+
+                self.savingWallet = User.shared.userSavingWallet ?? []
+
+                self.tableView.reloadData()
+
+                print("Gloabal : " , User.shared.userSavingWallet!)
+
+            }
+        }
+        
+        
+        queue.addOperation {
+            DatabaseHandler.shared.getAllSavingWallet(){ error in
+
+
+                if error  == nil {
+
+
+                    self.savingWallet = User.shared.userSavingWallet ?? []
+                    self.tableView.reloadData()
+
+                    print("Gloabal : " , User.shared.userSavingWallet!)
+
+                }
+
+
+
+            }
+        }
+        
         
     }
     
@@ -39,7 +84,7 @@ class SavingViewController: UIViewController {
 
 extension SavingViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return savingWallet.count
     }
     
     
@@ -47,7 +92,12 @@ extension SavingViewController : UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SavingTableViewCell") as!
         SavingTableViewCell
-        
+        cell.currentAmount.text = "\(savingWallet[indexPath.row].currentAmount)"
+        cell.targetSavingAmount.text = "\(savingWallet[indexPath.row].targetAmount)"
+        cell.walletSlider.minimumValue = 0.0
+        cell.walletSlider.maximumValue = savingWallet[indexPath.row].targetAmount
+        cell.walletSlider.value = savingWallet[indexPath.row].currentAmount
+        cell.savingTitle.text = savingWallet[indexPath.row].name
         return cell 
         
         

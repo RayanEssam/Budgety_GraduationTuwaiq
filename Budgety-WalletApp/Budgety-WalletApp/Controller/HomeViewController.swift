@@ -52,8 +52,6 @@ class HomeViewController: UIViewController {
             if error  == nil {
                 
                 self.transactionArray?.removeAll()
-               
-                
                 self.transactionArray = User.shared.userWallet?.transactions
                 print(self.transactionArray?.count)
                 self.transactionArray?.reverse()
@@ -85,7 +83,9 @@ class HomeViewController: UIViewController {
 
             }
         }
-//
+
+//        print("UnApproved : " , User.shared.unApprovedSharedSavingWallet?.count)
+        
         
     }
 
