@@ -17,6 +17,9 @@ class ApproveSavingWalletTableViewCell: UITableViewCell {
     @IBOutlet var savingWalletEmailLabel: UILabel!
     
     @IBOutlet var savingWalletApproveButton: UIButton!
+    
+    var unApprovedWallet : SharedWallet? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,13 +28,22 @@ class ApproveSavingWalletTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        innerCard.setCornerRadius()
+        savingWalletApproveButton.setCornerRadius()
+        
     }
 
     @IBAction func approve(_ sender: Any) {
         
+        DatabaseHandler.shared.updateSavingWalletToApproved(documentID: unApprovedWallet!.documentID) { error in
+            
+            if error == nil {
+                print("Done")
+                self.isHidden = true
+            }
+            
+        }
         
-        print("Hello from approve")
         
     }
 }

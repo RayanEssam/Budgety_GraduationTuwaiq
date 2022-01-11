@@ -25,7 +25,8 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBOutlet var pickerTextField: UITextField!
     
     @IBOutlet var transactionAmountTextField: UITextField!
-    
+    let queue = OperationQueue()
+
     
     var purpose = ["Salary" , "Gift", "Qattah", "Stocks", "Trading"]
     let incomePurpose = ["Salary" , "Gift", "Qattah", "Stocks", "Trading"]
@@ -57,7 +58,44 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        
+        User.shared.userSavingWallet?.removeAll()
+        
+        queue.waitUntilAllOperationsAreFinished()
+
+        
+        
+
+       
+//        print("in saving vc : " ,User.shared.userSavingWallet)
+
+       
+        queue.addOperation {
+            DatabaseHandler.shared.getSharedWallet { error in
+
+
+            }
+        }
+        
+        
+        queue.addOperation {
+            DatabaseHandler.shared.getAllSavingWallet(){ error in
+
+
+                if error  == nil {
+
+                }
+
+
+
+            }
+        }
+        
+        
+        
+    }
     
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -99,6 +137,8 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
         purpose = incomePurpose
         pickerTextField.text = purpose[0]
         pickerLaber.text = "Purpose"
+        pickerTextField.isEnabled = true
+        addTransactionButton.isEnabled = true
     }
     
     
@@ -114,9 +154,20 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
         outcomeButton.backgroundColor =  UIColor.appColor(.backgroundColor)
         outcomeButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
         transactionType = "Saving"
-        purpose = saving
+        purpose = getWalletNames()
         pickerLaber.text = "Wallet"
-        pickerTextField.text = purpose[0]
+        
+        if purpose.count == 0 {
+            
+            addTransactionButton.isEnabled = false
+            pickerTextField.text = "No Available Wallets"
+            pickerTextField.isEnabled = false
+        }else{
+            pickerTextField.text = purpose[0]
+            pickerTextField.isEnabled = true
+            addTransactionButton.isEnabled = true
+        }
+      
 
         
         
@@ -141,8 +192,11 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
 //        savingWalletView.isHidden = true
 //        WalletPickerLabel.isHidden = true
         purpose = outcomePurpose
+       
         pickerLaber.text = "Purpose"
         pickerTextField.text = purpose[0]
+        pickerTextField.isEnabled = true
+        addTransactionButton.isEnabled = true
     }
     
     
@@ -203,6 +257,24 @@ class AddTransactionViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     }
     
+    
+    func getWalletNames() -> [String] {
+        
+        var names : [String] = []
+        let temp = User.shared.userSavingWallet
+        
+        if temp?.count != 0 {
+            
+            temp?.forEach({ SavingWallet in
+                
+                names.append(SavingWallet.name)
+                
+            })
+        }
+        
+        return names
+        
+    }
  
     
 }

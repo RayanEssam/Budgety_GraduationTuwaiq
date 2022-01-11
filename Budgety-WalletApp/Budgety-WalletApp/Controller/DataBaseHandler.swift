@@ -83,6 +83,7 @@ class DatabaseHandler {
                             User.shared.userPhone = phone
                             User.shared.userWallet = Wallet(transactions: [], totalGain: 0, totalSpending: 0, Balance: 0)
                             User.shared.userSavingWallet = []
+                            User.shared.unApprovedSharedSavingWallet = [] 
                             // User.shared.userBalance = balance
                             completion(error)
                             
@@ -160,20 +161,27 @@ class DatabaseHandler {
     
     func updateIncomeTransaction(incomeAmount : Float){
         
-        //        db.collection("Wallet").document(User.shared.userEmail).updateData([
-        //
-        //            "TotalGain" : incomeAmount ,
-        //            "Balance" : incomeAmount+User.shared.userBalance ?? 0
-        //
-        //        ]) { error in-
-        //            if error == nil {
-        //                print("Update success")
-        //
-        //            }
-        //        }
+                db.collection("Wallet").document(User.shared.userEmail).updateData([
+        
+                    "TotalGain" : User.shared.userWallet!.totalGain + incomeAmount ,
+                    "Balance" : User.shared.userWallet!.Balance + incomeAmount
+        
+                ]) { error in
+                    
+                    if error == nil {
+                        
+                        
+                        
+                    }
+                    
+                }
         
         
     }
+    
+    
+
+    
     
     func getUserWallet( completion: @escaping( Error?) -> Void) {
         
@@ -326,13 +334,14 @@ class DatabaseHandler {
             
             
             if error == nil {
-                
+                print(User.shared.userEmail)
+                print(querySnapshot?.documents.count)
                 querySnapshot?.documents.forEach({ queryDocumentSnapshot in
                     
                     print(queryDocumentSnapshot.get("to"))
                     
                     let isApproved = queryDocumentSnapshot.get("approved") as! Bool
-                    
+                    print("C : \(isApproved)")
                     if isApproved {
                         print(" Approved")
                         self.getSavingWalletByDocumentID(documentID: queryDocumentSnapshot.get("documentID") as! String){ WalletError in
@@ -346,10 +355,7 @@ class DatabaseHandler {
                         }
                     }else{
                         
-                        print("Not Approved")
-                        User.shared.unApprovedSharedSavingWallet?.append(SharedWallet(documentID: queryDocumentSnapshot.get("documentID") as! String, isApproved: isApproved, from: queryDocumentSnapshot.get("from") as! String, target: queryDocumentSnapshot.get("target") as! Float, walletName: queryDocumentSnapshot.get("walletName") as! String))
-                        
-                        
+                    
                         
                     }
                     
@@ -364,7 +370,44 @@ class DatabaseHandler {
     }
     
     
-    
+    func getUnApprovedSahredWallet(completion: @escaping( Error?) -> Void){
+        
+        db.collection("UserSahredWalletApprove").whereField("to", isEqualTo: User.shared.userEmail).whereField("approved", isEqualTo: false).getDocuments { querySnapshot, error in
+            
+            if error == nil {
+                
+                if querySnapshot?.documents.count != 0 {
+                    querySnapshot?.documents.forEach({ queryDocumentSnapshot in
+                        
+                        let isApproved = queryDocumentSnapshot.get("approved") as! Bool
+
+                        print("Not Approved")
+                        User.shared.unApprovedSharedSavingWallet?.append(SharedWallet(documentID: queryDocumentSnapshot.documentID, isApproved: isApproved, from: queryDocumentSnapshot.get("from") as! String, target: queryDocumentSnapshot.get("target") as! Float, walletName: queryDocumentSnapshot.get("walletName") as! String))
+                        
+                                print("Check : " ,User.shared.unApprovedSharedSavingWallet )
+                    })
+                    
+                    completion(error)
+                }else{
+                    completion(error)
+
+                }
+                
+                
+            }else{
+                
+            }
+            
+           
+            
+            
+            
+            
+        }
+        
+        
+        
+    }
     
     func getAllSavingWallet(completion: @escaping( Error?) -> Void) {
         
@@ -430,4 +473,39 @@ class DatabaseHandler {
         
     }
     
+
+    func updateSavingWalletToApproved(documentID : String, completion: @escaping( Error?) -> Void) {
+        
+        
+        db.collection("UserSahredWalletApprove").document(documentID).updateData([
+            
+            "approved" : true
+        
+        ]) { error in
+            
+            
+            if error == nil {
+                User.shared.unApprovedSharedSavingWallet?.removeAll(where: { SharedWallet in
+                    
+                    SharedWallet.documentID == documentID 
+                    
+                })
+                
+                completion(error)
+                
+            }
+            
+        }
+        
+        
+        
+        
+    }
+
+
+
+
+
+
+
 }

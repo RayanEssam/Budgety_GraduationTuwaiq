@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet var totalOutcomeLabel: UILabel!
     @IBOutlet var currentBalanceLabel: UILabel!
+    @IBOutlet var bellButton: UIBarButtonItem!
     
     
     var transactionArray : [Transaction]? = nil
@@ -43,11 +44,54 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool)  {
     
         User.shared.userWallet?.transactions.removeAll()
-        
-        queue.waitUntilAllOperationsAreFinished()
+        User.shared.userSavingWallet?.removeAll()
 
+        queue.waitUntilAllOperationsAreFinished()        
+        
+        
+        queue.addOperation {
+            DatabaseHandler.shared.getUnApprovedSahredWallet { error in
+                if error == nil {
+                    
+                }
+            }
+        }
+        
+        queue.addOperation {
+            DatabaseHandler.shared.getSharedWallet { error in
+
+
+//                self.savingWallet = User.shared.userSavingWallet ?? []
+//
+//                self.tableView.reloadData()
+
+                print("Gloabal : " , User.shared.userSavingWallet!)
+
+            }
+        }
+        
+        
+        queue.addOperation {
+            DatabaseHandler.shared.getAllSavingWallet(){ error in
+
+
+                if error  == nil {
+
+
+//                    self.savingWallet = User.shared.userSavingWallet ?? []
+//                    self.tableView.reloadData()
+
+                    print("Gloabal : " , User.shared.userSavingWallet!)
+
+                }
+
+
+
+            }
+        }
         queue.addOperation{
 
+            
             DatabaseHandler.shared.getUserWalletTransaction { error in
             if error  == nil {
                 
@@ -57,7 +101,7 @@ class HomeViewController: UIViewController {
                 self.transactionArray?.reverse()
                 self.tableView.reloadData()
 
-                print("got all the transactions!")
+                print("2")
 
             }else{
 
@@ -73,7 +117,7 @@ class HomeViewController: UIViewController {
             DatabaseHandler.shared.getUserWallet { error in
 
                 if error == nil {
-                    print("Gain : " , User.shared.userWallet!.totalGain)
+                    print("3")
                     self.totalIncomeLabel.text =  "\(User.shared.userWallet!.totalGain)"
                     self.totalOutcomeLabel.text = "\(User.shared.userWallet!.totalSpending)"
                     self.currentBalanceLabel.text = "\(User.shared.userWallet!.Balance)"
@@ -85,6 +129,7 @@ class HomeViewController: UIViewController {
         }
 
 //        print("UnApproved : " , User.shared.unApprovedSharedSavingWallet?.count)
+        
         
         
     }
@@ -170,5 +215,29 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource
 //    }
     
     
+    
+}
+extension UIBarButtonItem {
+        
+    convenience init(icon: UIImage, badge: String, _ badgeBackgroundColor: UIColor = #colorLiteral(red: 0.9156965613, green: 0.380413115, blue: 0.2803866267, alpha: 1), target: Any? = self, action: Selector? = nil) {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        imageView.image = icon
+
+        let label = UILabel(frame: CGRect(x: -8, y: -5, width: 18, height: 18))
+        label.text = badge
+        label.backgroundColor = badgeBackgroundColor
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 10)
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 18 / 2
+        label.textColor = .white
+
+        let buttonView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        buttonView.addSubview(imageView)
+        buttonView.addSubview(label)
+        buttonView.addGestureRecognizer(UITapGestureRecognizer.init(target: target, action: action))
+        self.init(customView: buttonView)
+    }
     
 }
