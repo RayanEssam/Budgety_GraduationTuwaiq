@@ -7,18 +7,25 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController , AddTransactionViewControllerDelegate  {
+    func finishedPassingData(transactionsArray: [Transaction]) {
+        
+        
+        transactionArray = transactionsArray
+        tableView.reloadData()
+    }
+    
 
     @IBOutlet var addTransactionFABButton: UIButton!
     @IBOutlet var homeNavigationBar: UINavigationBar!
     @IBOutlet var transationSummaryView: UIView!
     @IBOutlet var tableView: UITableView!
-
     @IBOutlet var totalIncomeLabel: UILabel!
-    
     @IBOutlet var totalOutcomeLabel: UILabel!
     @IBOutlet var currentBalanceLabel: UILabel!
     @IBOutlet var bellButton: UIBarButtonItem!
+    @IBOutlet var totalSaving: UILabel!
+    @IBOutlet var noTransactionsImage: UIImageView!
     
     
     var transactionArray : [Transaction]? = nil
@@ -42,7 +49,8 @@ class HomeViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool)  {
-    
+    print("AM GONNA APPEAR AGAIN !!!")
+        
         User.shared.userWallet?.transactions.removeAll()
         User.shared.userSavingWallet?.removeAll()
 
@@ -101,7 +109,14 @@ class HomeViewController: UIViewController {
                 self.transactionArray?.reverse()
                 self.tableView.reloadData()
 
-                print("2")
+                if self.transactionArray?.count == 0 {
+                    self.tableView.isHidden == true
+                    self.noTransactionsImage.isHidden = false
+                    
+                }else{
+                    self.tableView.isHidden == false
+                    self.noTransactionsImage.isHidden = true
+                }
 
             }else{
 
@@ -121,6 +136,7 @@ class HomeViewController: UIViewController {
                     self.totalIncomeLabel.text =  "\(User.shared.userWallet!.totalGain)"
                     self.totalOutcomeLabel.text = "\(User.shared.userWallet!.totalSpending)"
                     self.currentBalanceLabel.text = "\(User.shared.userWallet!.Balance)"
+                    self.totalSaving.text = "\(User.shared.userWallet!.Saving)"
                 }
 
 
@@ -134,7 +150,18 @@ class HomeViewController: UIViewController {
         
     }
 
-
+    @IBAction func addTransactionButtonSegue(_ sender: Any) {
+        
+        performSegue(withIdentifier: "VCinitialToFinal", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? AddTransactionViewController {
+            destination.delegate = self
+        }
+    }
+    
+    
 }
 
 extension UINavigationController {
@@ -189,6 +216,13 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource
             
             cell.transactionTypeImage.image = UIImage(systemName: "chevron.down")
             cell.transactionTypeImage.tintColor = UIColor(named: "RedMainColor")
+        }else{
+            
+            cell.amountLabel.textColor =  .darkGray
+            
+            cell.transactionTypeImage.image = UIImage(systemName: "bitcoinsign.circle")
+            cell.transactionTypeImage.tintColor = .darkGray
+            
         }
         
         

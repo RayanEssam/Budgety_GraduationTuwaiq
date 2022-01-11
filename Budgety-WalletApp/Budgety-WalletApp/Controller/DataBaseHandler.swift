@@ -81,7 +81,7 @@ class DatabaseHandler {
                             User.shared.userName = name
                             User.shared.userEmail = email
                             User.shared.userPhone = phone
-                            User.shared.userWallet = Wallet(transactions: [], totalGain: 0, totalSpending: 0, Balance: 0)
+                            User.shared.userWallet = Wallet(transactions: [], totalGain: 0, totalSpending: 0, Balance: 0, Saving: 0)
                             User.shared.userSavingWallet = []
                             User.shared.unApprovedSharedSavingWallet = [] 
                             // User.shared.userBalance = balance
@@ -106,11 +106,12 @@ class DatabaseHandler {
             "Balance" : 0,
             "TotalGain" : 0 ,
             "TotalSpending" : 0,
+            "TotalSaving" : 0,
         ]
         
         db.collection("Wallet").document(User.shared.userEmail).setData(newRawWallet) { error in
             if error == nil {
-                User.shared.userWallet = Wallet(totalGain: 0, totalSpending: 0, Balance: 0)
+                User.shared.userWallet = Wallet(totalGain: 0, totalSpending: 0, Balance: 0, Saving: 0)
                 print("adding new wallet")
                 
             }
@@ -119,7 +120,7 @@ class DatabaseHandler {
     }
     
     
-    func addNewTransaction(transaction : Transaction, completion: @escaping( Error?) -> Void)  {
+    func addNewTransaction(transaction : Transaction,savingDocumentIndex : Int , completion: @escaping( Error?) -> Void)  {
         
         //        let transaction = Transaction(purpose: "test", timeStamp: Date(), transactionTypeString: TransactionType.Income.rawValue, amount: 29, description: "Nothing")
         
@@ -141,7 +142,20 @@ class DatabaseHandler {
                     User.shared.userWallet?.transactions.append(transaction)
                     print("New Transaction is added")
                     
-                    self.updateIncomeTransaction(incomeAmount: transaction.amount)
+                    switch transaction.transactionTypeString {
+        
+                    case "Income" :
+                        self.updateIncomeTransaction(incomeAmount: transaction.amount)
+                    case "Outcome" :
+                        self.updateOutcomeTransaction(outcomeAmount: transaction.amount)
+                    default :
+                        // add in transactions and update wallet
+                        print("ID :   \(User.shared.userSavingWallet![savingDocumentIndex].documentID)")
+                        self.updateSavingWallet(amount: transaction.amount, savingDocumentIndex: savingDocumentIndex)
+                        
+                    }
+                    
+                    
                     
                     completion(error)
                     
@@ -157,6 +171,24 @@ class DatabaseHandler {
         
         
         
+    }
+    
+    func updateSavingTransaction(amount : Float){
+        
+//        db.collection("Wallet").document(User.shared.userEmail).updateData([
+//
+//            "TotalGain" : User.shared. + amount ,
+//
+//
+//        ]) { error in
+//
+//            if error == nil {
+//
+//
+//
+//            }
+//
+//        }
     }
     
     func updateIncomeTransaction(incomeAmount : Float){
@@ -179,9 +211,40 @@ class DatabaseHandler {
         
     }
     
+    func updateOutcomeTransaction(outcomeAmount : Float){
+        
+                db.collection("Wallet").document(User.shared.userEmail).updateData([
+        
+                    "TotalSpending" : User.shared.userWallet!.totalSpending + outcomeAmount ,
+                    "Balance" : User.shared.userWallet!.Balance - outcomeAmount
+        
+                ]) { error in
+                    
+                    if error == nil {
+                        
+                        
+                        
+                    }
+                    
+                }
+        
+        
+    }
     
+    func updateSavingWallet(amount : Float , savingDocumentIndex : Int){
+        
+        print("")
+        db.collection("SavingsWallet").document(User.shared.userSavingWallet![savingDocumentIndex].documentID).updateData([
 
-    
+
+            "currentAmount" : User.shared.userSavingWallet![savingDocumentIndex].currentAmount + amount
+
+        ]) { error in
+
+        }
+        
+        
+    }
     
     func getUserWallet( completion: @escaping( Error?) -> Void) {
         
@@ -198,10 +261,12 @@ class DatabaseHandler {
                 print("Spend  : ", spending )
                 let balance = querySnapshot!.get("Balance")!  as! Float
                 print("Balance  : ", balance )
-                
+                let saving = querySnapshot!.get("TotalSaving")!  as! Float
                 User.shared.userWallet?.totalGain = totalGain
                 User.shared.userWallet?.totalSpending = spending
                 User.shared.userWallet?.Balance = balance
+                User.shared.userWallet?.Saving = saving
+
                 //                    User.shared.userWallet = Wallet(totalGain: Float(totalGain), totalSpending: Float(spending), Balance: balance)
                 
                 
@@ -222,7 +287,6 @@ class DatabaseHandler {
         
         
     }
-    
     
     func getUserWalletTransaction(completion: @escaping( Error?) -> Void) {
         
@@ -264,8 +328,6 @@ class DatabaseHandler {
         }
         
     }
-    
-    
     
     func addNewWallet(soloWallet : SavingWallet, uuid : String  , completion: @escaping( Error?) -> Void){
         
@@ -369,7 +431,6 @@ class DatabaseHandler {
         
     }
     
-    
     func getUnApprovedSahredWallet(completion: @escaping( Error?) -> Void){
         
         db.collection("UserSahredWalletApprove").whereField("to", isEqualTo: User.shared.userEmail).whereField("approved", isEqualTo: false).getDocuments { querySnapshot, error in
@@ -444,8 +505,6 @@ class DatabaseHandler {
         
     }
     
-    
-    
     func getSavingWalletByDocumentID(documentID : String, completion: @escaping( Error?) -> Void){
         
         
@@ -473,7 +532,6 @@ class DatabaseHandler {
         
     }
     
-
     func updateSavingWalletToApproved(documentID : String, completion: @escaping( Error?) -> Void) {
         
         

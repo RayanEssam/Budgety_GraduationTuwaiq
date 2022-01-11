@@ -647,6 +647,9 @@
                                     <outlet property="delegate" destination="pxV-sx-GdI" id="Obn-3g-V1i"/>
                                 </connections>
                             </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Notransactions" translatesAutoresizingMaskIntoConstraints="NO" id="ezQ-Wn-SAO">
+                                <rect key="frame" x="21" y="314" width="372" height="448"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1MA-0C-FJh">
                                 <rect key="frame" x="332" y="708" width="60" height="60"/>
                                 <color key="backgroundColor" name="MainColor"/>
@@ -661,7 +664,7 @@
                                     <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="nxl-FD-uo9" kind="show" id="gIq-Kc-x5H"/>
+                                    <action selector="addTransactionButtonSegue:" destination="pxV-sx-GdI" eventType="touchUpInside" id="Ruf-oA-Xnc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -669,6 +672,7 @@
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
                             <constraint firstItem="clV-f6-Dbj" firstAttribute="centerX" secondItem="84K-hy-fRP" secondAttribute="centerX" id="4sM-l8-pzc"/>
+                            <constraint firstItem="ezQ-Wn-SAO" firstAttribute="width" secondItem="84K-hy-fRP" secondAttribute="width" multiplier="0.898551" id="7hC-Vb-efh"/>
                             <constraint firstItem="Q7p-Rd-qOb" firstAttribute="centerX" secondItem="84K-hy-fRP" secondAttribute="centerX" id="9MC-UH-x9X"/>
                             <constraint firstItem="Bvk-c3-WEQ" firstAttribute="leading" secondItem="3QH-bv-v5o" secondAttribute="leading" id="9b7-n6-eIa"/>
                             <constraint firstItem="Q7p-Rd-qOb" firstAttribute="trailing" secondItem="3QH-bv-v5o" secondAttribute="trailing" id="B9x-Bd-k8M"/>
@@ -680,15 +684,18 @@
                             <constraint firstItem="Q7p-Rd-qOb" firstAttribute="leading" secondItem="3QH-bv-v5o" secondAttribute="leading" id="ObO-jp-ZtL"/>
                             <constraint firstItem="clV-f6-Dbj" firstAttribute="centerY" secondItem="84K-hy-fRP" secondAttribute="centerY" constant="-200" id="Qap-AY-UJX"/>
                             <constraint firstItem="3QH-bv-v5o" firstAttribute="trailing" secondItem="1MA-0C-FJh" secondAttribute="trailing" constant="22" id="U5q-gm-46C"/>
+                            <constraint firstItem="ezQ-Wn-SAO" firstAttribute="centerY" secondItem="84K-hy-fRP" secondAttribute="centerY" constant="90" id="WVh-e7-mj9"/>
                             <constraint firstItem="Q7p-Rd-qOb" firstAttribute="top" secondItem="84K-hy-fRP" secondAttribute="top" id="Wsb-PR-EsU"/>
                             <constraint firstItem="Bvk-c3-WEQ" firstAttribute="top" secondItem="3QH-bv-v5o" secondAttribute="top" id="a7z-xH-rFt"/>
                             <constraint firstItem="xYd-ON-viI" firstAttribute="top" secondItem="clV-f6-Dbj" secondAttribute="bottom" constant="30" id="bMB-et-Bds"/>
                             <constraint firstItem="clV-f6-Dbj" firstAttribute="top" secondItem="w7H-TP-99r" secondAttribute="bottom" constant="25" id="bef-4j-LtV"/>
                             <constraint firstItem="3QH-bv-v5o" firstAttribute="bottom" secondItem="1MA-0C-FJh" secondAttribute="bottom" constant="45" id="nCF-hA-UfF"/>
                             <constraint firstItem="clV-f6-Dbj" firstAttribute="width" secondItem="84K-hy-fRP" secondAttribute="width" multiplier="0.75" id="oNC-2R-NMw"/>
+                            <constraint firstItem="ezQ-Wn-SAO" firstAttribute="centerX" secondItem="84K-hy-fRP" secondAttribute="centerX" id="oer-6v-hUr"/>
                             <constraint firstItem="xYd-ON-viI" firstAttribute="leading" secondItem="3QH-bv-v5o" secondAttribute="leading" constant="20" id="rDa-kA-9Oo"/>
                             <constraint firstItem="w7H-TP-99r" firstAttribute="height" secondItem="84K-hy-fRP" secondAttribute="height" multiplier="0.0770089" id="syh-6h-FOW"/>
                             <constraint firstItem="3QH-bv-v5o" firstAttribute="trailing" secondItem="xYd-ON-viI" secondAttribute="trailing" constant="20" id="t3v-k4-35G"/>
+                            <constraint firstItem="ezQ-Wn-SAO" firstAttribute="height" secondItem="84K-hy-fRP" secondAttribute="height" multiplier="0.5" id="uMi-pQ-h0A"/>
                             <constraint firstItem="Q7p-Rd-qOb" firstAttribute="height" secondItem="84K-hy-fRP" secondAttribute="height" multiplier="0.264509" id="xWG-sH-IdH"/>
                         </constraints>
                     </view>
@@ -701,10 +708,13 @@
                         <outlet property="bellButton" destination="N4U-aJ-bQO" id="AeL-of-IbA"/>
                         <outlet property="currentBalanceLabel" destination="WtX-Z4-kmh" id="d4m-Op-1oq"/>
                         <outlet property="homeNavigationBar" destination="Bvk-c3-WEQ" id="ckd-l7-iu4"/>
+                        <outlet property="noTransactionsImage" destination="ezQ-Wn-SAO" id="gef-Oc-D2q"/>
                         <outlet property="tableView" destination="xYd-ON-viI" id="bsN-yQ-kdD"/>
                         <outlet property="totalIncomeLabel" destination="QN3-0z-M17" id="vhP-o8-g3p"/>
                         <outlet property="totalOutcomeLabel" destination="bmS-tF-p3A" id="M3r-6D-1F0"/>
+                        <outlet property="totalSaving" destination="bdS-OB-1Tg" id="vRR-kc-zru"/>
                         <outlet property="transationSummaryView" destination="clV-f6-Dbj" id="Uav-Rq-0Sw"/>
+                        <segue destination="nxl-FD-uo9" kind="show" identifier="VCinitialToFinal" id="4Q9-mx-dYX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="96v-Tj-A5Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1740,6 +1750,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Notransactions" width="300" height="400"/>
         <image name="backgroundImage" width="841" height="901"/>
         <image name="bell" catalog="system" width="128" height="124"/>
         <image name="bitcoinsign.circle" catalog="system" width="128" height="121"/>
