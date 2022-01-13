@@ -30,6 +30,8 @@
 		CF387A6D278199C500301100 /* EnumAssetsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A6C278199C500301100 /* EnumAssetsColor.swift */; };
 		CF387A6F2781B4AB00301100 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A6E2781B4AB00301100 /* GetStartedViewController.swift */; };
 		CF387A7127820E5C00301100 /* UITextFieldExtension .swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A7027820E5B00301100 /* UITextFieldExtension .swift */; };
+		CF6C63ED278F145F0061AFB7 /* StatesticsChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6C63EC278F145F0061AFB7 /* StatesticsChartsViewController.swift */; };
+		CF6C63F527900A150061AFB7 /* NSUIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6C63F427900A150061AFB7 /* NSUIColorExtension.swift */; };
 		CF98D2FD2784C62800D78251 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98D2FC2784C62800D78251 /* User.swift */; };
 		CF98D2FF2784DAE400D78251 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98D2FE2784DAE400D78251 /* Transaction.swift */; };
 		CF98D3012784DB6800D78251 /* EnumTransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98D3002784DB6800D78251 /* EnumTransactionType.swift */; };
@@ -69,6 +71,9 @@
 		CF387A6C278199C500301100 /* EnumAssetsColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumAssetsColor.swift; sourceTree = "<group>"; };
 		CF387A6E2781B4AB00301100 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		CF387A7027820E5B00301100 /* UITextFieldExtension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextFieldExtension .swift"; sourceTree = "<group>"; };
+		CF6C63EC278F145F0061AFB7 /* StatesticsChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesticsChartsViewController.swift; sourceTree = "<group>"; };
+		CF6C63F0278F21390061AFB7 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF6C63F427900A150061AFB7 /* NSUIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSUIColorExtension.swift; sourceTree = "<group>"; };
 		CF98D2FC2784C62800D78251 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CF98D2FE2784DAE400D78251 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		CF98D3002784DB6800D78251 /* EnumTransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTransactionType.swift; sourceTree = "<group>"; };
@@ -106,6 +111,7 @@
 		6620AA3A4857A4D71267DD98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF6C63F0278F21390061AFB7 /* Charts.framework */,
 				FBB0F30AD056ED0655A60077 /* Pods_Budgety_WalletApp.framework */,
 			);
 			name = Frameworks;
@@ -126,6 +132,7 @@
 				CF07F98227874D05005848D3 /* UIViewExtension.swift */,
 				CF07F98427874E9C005848D3 /* UIColorExtension.swift */,
 				CF01F184278DF10F00A5BA7C /* UINavigationControllerExtension.swift */,
+				CF6C63F427900A150061AFB7 /* NSUIColorExtension.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -205,6 +212,7 @@
 				CF01F17A278B02BF00A5BA7C /* AddWalletViewController.swift */,
 				CF01F180278DA96400A5BA7C /* ApproveSavingWalletTableViewCell.swift */,
 				CF01F182278DAB1400A5BA7C /* UnApprovedSharedWalletViewController.swift */,
+				CF6C63EC278F145F0061AFB7 /* StatesticsChartsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -330,6 +338,7 @@
 				CF01F185278DF10F00A5BA7C /* UINavigationControllerExtension.swift in Sources */,
 				CF01F183278DAB1400A5BA7C /* UnApprovedSharedWalletViewController.swift in Sources */,
 				CF387A6D278199C500301100 /* EnumAssetsColor.swift in Sources */,
+				CF6C63ED278F145F0061AFB7 /* StatesticsChartsViewController.swift in Sources */,
 				CF01F17B278B02BF00A5BA7C /* AddWalletViewController.swift in Sources */,
 				CF0A15E92784338800D390A0 /* SavingTableViewCell.swift in Sources */,
 				CF98D2FD2784C62800D78251 /* User.swift in Sources */,
@@ -348,6 +357,7 @@
 				CF387A7127820E5C00301100 /* UITextFieldExtension .swift in Sources */,
 				CFAC03E727835A7100180827 /* TapBar.swift in Sources */,
 				CF01F188278DF2C000A5BA7C /* AddTransactionViewControllerDelegate.swift in Sources */,
+				CF6C63F527900A150061AFB7 /* NSUIColorExtension.swift in Sources */,
 				CFAC03EB278362AA00180827 /* TabBarController.swift in Sources */,
 				CF01F181278DA96400A5BA7C /* ApproveSavingWalletTableViewCell.swift in Sources */,
 				CF01F17F278CACD500A5BA7C /* SharedWallet.swift in Sources */,
