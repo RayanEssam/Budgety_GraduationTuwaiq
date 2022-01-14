@@ -23,7 +23,8 @@ class SavingViewController: UIViewController {
         savingNavigationController.shadowImage = UIImage()
         savingNavigationController.backIndicatorImage = UIImage()
         
-        
+        self.hideKeyboardWhenTappedAround()
+
         
     }
     

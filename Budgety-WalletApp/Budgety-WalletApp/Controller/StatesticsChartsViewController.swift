@@ -13,6 +13,13 @@ class StatesticsChartsViewController: UIViewController {
     @IBOutlet var globalChartCard: UIView!
     @IBOutlet var pieView: PieChartView!
     @IBOutlet var statesticsNavigationBar: UINavigationBar!
+    @IBOutlet var tableView: UITableView!
+    
+    let tipsString : [String] = ["If you’re looking for a place to trade your stocks, check out TradeStation its a great place for trading stocks!" ,
+    "Get a credit card that gives you a cash back! it helps in the long term!",
+    "Avoid the Non-Essentials such as buying coffee every morning,instad you should do it", "Cancel unused memberships, you will be suprised how much it will saves you", "It's not wrong to buy on sell items!"
+    
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,4 +79,30 @@ class StatesticsChartsViewController: UIViewController {
 
 
 
+}
+
+
+extension StatesticsChartsViewController : UITableViewDelegate , UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tipsString.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StatesticsTableViewCell") as! StatesticsTableViewCell
+        
+        cell.tipTextContent.text = tipsString[indexPath.row]
+        
+        return cell
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
+    
+    
 }

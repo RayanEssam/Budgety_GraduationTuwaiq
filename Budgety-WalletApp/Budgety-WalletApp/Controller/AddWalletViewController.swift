@@ -19,12 +19,17 @@ class AddWalletViewController: UIViewController {
     @IBOutlet var sharedEmailLabel: UILabel!
     var walletType = "Solo"
     var usersEmail : [String] = []
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         soloWalletButton.setCornerRadius()
         sharedWalletButton.setCornerRadius()
         addWalletView.setCornerRadius()
         addWalletButton.setCornerRadius()
+        self.hideKeyboardWhenTappedAround()
+
     }
     
     @IBAction func soloActionButton(_ sender: Any) {

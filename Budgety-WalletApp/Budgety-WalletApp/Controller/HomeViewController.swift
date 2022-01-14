@@ -206,9 +206,16 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource
 
 // Handle Custome Delegate protocol.
 extension HomeViewController : AddTransactionViewControllerDelegate {
-    
-    func finishedPassingData(transactionsArray: [Transaction]) {
+    func finishedPassingData(transactionsArray: [Transaction], newBalance: Float, income: Float, saving: Float, outcome: Float) {
         transactionArray = transactionsArray
+        currentBalanceLabel.text = "\(newBalance)"
+        totalIncomeLabel.text = "\(income)"
+        totalSaving.text = "\(saving)"
+        totalOutcomeLabel.text = "\(outcome)"
+        
         tableView.reloadData()
     }
+    
+    
+   
 }

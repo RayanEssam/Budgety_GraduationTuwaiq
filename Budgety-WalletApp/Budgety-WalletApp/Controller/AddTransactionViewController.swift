@@ -35,8 +35,10 @@ class AddTransactionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpUI()
+        self.hideKeyboardWhenTappedAround()
 
+        setUpUI()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,7 +47,7 @@ class AddTransactionViewController: UIViewController {
         User.shared.userSavingWallet?.removeAll()
         
         queue.waitUntilAllOperationsAreFinished()
-
+        
         queue.addOperation {
             DatabaseHandler.shared.getSharedWallet { error in
                 
@@ -66,7 +68,7 @@ class AddTransactionViewController: UIViewController {
                 
             }
         }
-            
+        
         
     }
     
@@ -80,7 +82,7 @@ class AddTransactionViewController: UIViewController {
         
         savingButton.backgroundColor =  UIColor.appColor(.backgroundColor)
         savingButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
-  
+        
         
         transactionType = "Income"
         purpose = incomePurpose
@@ -97,7 +99,7 @@ class AddTransactionViewController: UIViewController {
         
         IncomeButton.backgroundColor =  UIColor.appColor(.backgroundColor)
         IncomeButton.titleLabel!.textColor =  UIColor.appColor(.mainColor)
-
+        
         
         outcomeButton.backgroundColor =  UIColor.appColor(.backgroundColor)
         outcomeButton.titleLabel?.textColor =  UIColor.appColor(.mainColor)
@@ -116,7 +118,7 @@ class AddTransactionViewController: UIViewController {
             pickerTextField.isEnabled = true
             addTransactionButton.isEnabled = true
         }
-    
+        
     }
     
     @IBAction func outcomeTransactionType(_ sender: Any) {
@@ -163,11 +165,31 @@ class AddTransactionViewController: UIViewController {
                         let amount = transactionAmountTextField.text!
                         
                         let transation = Transaction(purpose: purprose, timeStamp: datePicker.date, transactionTypeString: transactionType, amount: Float(amount) ?? 0, description: descreption)
-
+                        
                         DatabaseHandler.shared.addNewTransaction(transaction: transation, savingDocumentIndex: savingDocumentIndex){ error in
                             
                             if error == nil {
-                                self.delegate?.finishedPassingData(transactionsArray: User.shared.userWallet!.transactions)
+                                
+                                switch self.transactionType {
+                                case "Income":
+                                    self.delegate?.finishedPassingData(transactionsArray: User.shared.userWallet!.transactions ,  newBalance: User.shared.userWallet!.Balance+Float(amount)!,
+                                        income: User.shared.userWallet!.totalGain+Float(amount)!,
+                                        saving: User.shared.userWallet!.Saving,
+                                        outcome: User.shared.userWallet!.totalSpending)
+                                case "Outcome":
+                                    
+                                        self.delegate?.finishedPassingData(transactionsArray: User.shared.userWallet!.transactions ,  newBalance: User.shared.userWallet!.Balance-Float(amount)!,
+                                            income: User.shared.userWallet!.totalGain,
+                                            saving: User.shared.userWallet!.Saving,
+                                            outcome: User.shared.userWallet!.totalSpending+Float(amount)!)
+                                default:
+                                    self.delegate?.finishedPassingData(transactionsArray: User.shared.userWallet!.transactions ,  newBalance: User.shared.userWallet!.Balance-Float(amount)!,
+                                        income: User.shared.userWallet!.totalGain,
+                                        saving: User.shared.userWallet!.Saving+Float(amount)!,
+                                        outcome: User.shared.userWallet!.totalSpending)
+                                }
+                                
+                           
                                 self.dismiss(animated: true, completion: nil)
                                 
                             }
@@ -199,7 +221,7 @@ class AddTransactionViewController: UIViewController {
         
         
     }
-      
+    
 }
 
 // SetUp UI elements (customaization) + Functionality 
@@ -215,7 +237,7 @@ extension AddTransactionViewController {
         
         datePicker.semanticContentAttribute = .forceRightToLeft
         datePicker.subviews.first?.semanticContentAttribute = .forceRightToLeft
-
+        
         porpusePicker.dataSource = self
         porpusePicker.delegate = self
         

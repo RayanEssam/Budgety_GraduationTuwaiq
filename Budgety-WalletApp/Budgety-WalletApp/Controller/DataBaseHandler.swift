@@ -151,6 +151,7 @@ class DatabaseHandler {
                     default :
                         // add in transactions and update wallet
                         print("ID :   \(User.shared.userSavingWallet![savingDocumentIndex].documentID)")
+                        self.updateSavingTransaction(amount: transaction.amount)
                         self.updateSavingWallet(amount: transaction.amount, savingDocumentIndex: savingDocumentIndex)
                         
                     }
@@ -175,20 +176,23 @@ class DatabaseHandler {
     
     func updateSavingTransaction(amount : Float){
         
-//        db.collection("Wallet").document(User.shared.userEmail).updateData([
-//
-//            "TotalGain" : User.shared. + amount ,
-//
-//
-//        ]) { error in
-//
-//            if error == nil {
-//
-//
-//
-//            }
-//
-//        }
+        db.collection("Wallet").document(User.shared.userEmail).updateData([
+
+            "TotalSaving" : User.shared.userWallet!.Saving + amount ,
+            "Balance" :  User.shared.userWallet!.Balance - amount
+
+
+        ]) { error in
+
+            if error == nil {
+
+print("Errrr :(")
+
+            }else{
+                print( "Error saving ",error?.localizedDescription)
+            }
+
+        }
     }
     
     func updateIncomeTransaction(incomeAmount : Float){
@@ -202,8 +206,8 @@ class DatabaseHandler {
                     
                     if error == nil {
                         
-                        
-                        
+                        User.shared.userWallet!.totalGain += incomeAmount
+                        User.shared.userWallet!.Balance += incomeAmount
                     }
                     
                 }
@@ -222,8 +226,8 @@ class DatabaseHandler {
                     
                     if error == nil {
                         
-                        
-                        
+                        User.shared.userWallet!.totalSpending += outcomeAmount
+                        User.shared.userWallet!.Balance -= outcomeAmount
                     }
                     
                 }
@@ -240,7 +244,12 @@ class DatabaseHandler {
             "currentAmount" : User.shared.userSavingWallet![savingDocumentIndex].currentAmount + amount
 
         ]) { error in
+            if error == nil {
+                
+                User.shared.userSavingWallet![savingDocumentIndex].currentAmount += amount
 
+            }
+            
         }
         
         

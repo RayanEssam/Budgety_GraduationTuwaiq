@@ -32,6 +32,9 @@
 		CF387A7127820E5C00301100 /* UITextFieldExtension .swift in Sources */ = {isa = PBXBuildFile; fileRef = CF387A7027820E5B00301100 /* UITextFieldExtension .swift */; };
 		CF6C63ED278F145F0061AFB7 /* StatesticsChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6C63EC278F145F0061AFB7 /* StatesticsChartsViewController.swift */; };
 		CF6C63F527900A150061AFB7 /* NSUIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6C63F427900A150061AFB7 /* NSUIColorExtension.swift */; };
+		CF6C63F927901A310061AFB7 /* StatesticsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6C63F827901A310061AFB7 /* StatesticsTableViewCell.swift */; };
+		CF6C63FB2790230C0061AFB7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6C63FA2790230C0061AFB7 /* SettingsViewController.swift */; };
+		CF7A176D2791D23100B2BD09 /* UIViewControllerExtension .swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A176C2791D23100B2BD09 /* UIViewControllerExtension .swift */; };
 		CF98D2FD2784C62800D78251 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98D2FC2784C62800D78251 /* User.swift */; };
 		CF98D2FF2784DAE400D78251 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98D2FE2784DAE400D78251 /* Transaction.swift */; };
 		CF98D3012784DB6800D78251 /* EnumTransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98D3002784DB6800D78251 /* EnumTransactionType.swift */; };
@@ -74,6 +77,9 @@
 		CF6C63EC278F145F0061AFB7 /* StatesticsChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesticsChartsViewController.swift; sourceTree = "<group>"; };
 		CF6C63F0278F21390061AFB7 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6C63F427900A150061AFB7 /* NSUIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSUIColorExtension.swift; sourceTree = "<group>"; };
+		CF6C63F827901A310061AFB7 /* StatesticsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesticsTableViewCell.swift; sourceTree = "<group>"; };
+		CF6C63FA2790230C0061AFB7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CF7A176C2791D23100B2BD09 /* UIViewControllerExtension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewControllerExtension .swift"; sourceTree = "<group>"; };
 		CF98D2FC2784C62800D78251 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CF98D2FE2784DAE400D78251 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		CF98D3002784DB6800D78251 /* EnumTransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTransactionType.swift; sourceTree = "<group>"; };
@@ -133,6 +139,7 @@
 				CF07F98427874E9C005848D3 /* UIColorExtension.swift */,
 				CF01F184278DF10F00A5BA7C /* UINavigationControllerExtension.swift */,
 				CF6C63F427900A150061AFB7 /* NSUIColorExtension.swift */,
+				CF7A176C2791D23100B2BD09 /* UIViewControllerExtension .swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -213,6 +220,8 @@
 				CF01F180278DA96400A5BA7C /* ApproveSavingWalletTableViewCell.swift */,
 				CF01F182278DAB1400A5BA7C /* UnApprovedSharedWalletViewController.swift */,
 				CF6C63EC278F145F0061AFB7 /* StatesticsChartsViewController.swift */,
+				CF6C63F827901A310061AFB7 /* StatesticsTableViewCell.swift */,
+				CF6C63FA2790230C0061AFB7 /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -340,12 +349,14 @@
 				CF387A6D278199C500301100 /* EnumAssetsColor.swift in Sources */,
 				CF6C63ED278F145F0061AFB7 /* StatesticsChartsViewController.swift in Sources */,
 				CF01F17B278B02BF00A5BA7C /* AddWalletViewController.swift in Sources */,
+				CF6C63FB2790230C0061AFB7 /* SettingsViewController.swift in Sources */,
 				CF0A15E92784338800D390A0 /* SavingTableViewCell.swift in Sources */,
 				CF98D2FD2784C62800D78251 /* User.swift in Sources */,
 				CF387A51278181E000301100 /* AppDelegate.swift in Sources */,
 				CFB39B632785788900217399 /* Wallet.swift in Sources */,
 				CF98D2FF2784DAE400D78251 /* Transaction.swift in Sources */,
 				CF01F17D278B27C600A5BA7C /* SavingWallet.swift in Sources */,
+				CF6C63F927901A310061AFB7 /* StatesticsTableViewCell.swift in Sources */,
 				CF07F98527874E9C005848D3 /* UIColorExtension.swift in Sources */,
 				CFAC03E927835C9A00180827 /* AddTransactionViewController.swift in Sources */,
 				CF9D29852782CDB900AA6F1D /* DataBaseHandler.swift in Sources */,
@@ -359,6 +370,7 @@
 				CF01F188278DF2C000A5BA7C /* AddTransactionViewControllerDelegate.swift in Sources */,
 				CF6C63F527900A150061AFB7 /* NSUIColorExtension.swift in Sources */,
 				CFAC03EB278362AA00180827 /* TabBarController.swift in Sources */,
+				CF7A176D2791D23100B2BD09 /* UIViewControllerExtension .swift in Sources */,
 				CF01F181278DA96400A5BA7C /* ApproveSavingWalletTableViewCell.swift in Sources */,
 				CF01F17F278CACD500A5BA7C /* SharedWallet.swift in Sources */,
 				CF387A53278181E000301100 /* SceneDelegate.swift in Sources */,

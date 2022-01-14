@@ -10,5 +10,5 @@ import UIKit
 
 
 protocol AddTransactionViewControllerDelegate {
-    func finishedPassingData(transactionsArray : [Transaction])
+    func finishedPassingData(transactionsArray : [Transaction] , newBalance : Float , income : Float , saving : Float , outcome : Float)
 }
