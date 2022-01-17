@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddWalletViewController: UIViewController {
+class AddWalletViewController: UIViewController , UITextFieldDelegate{
     
     @IBOutlet var addWalletView: UIView!
     @IBOutlet var soloWalletButton: UIButton!
@@ -54,6 +54,14 @@ class AddWalletViewController: UIViewController {
         walletType = "Shared"
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        
+        
+    }
+    
+    
+  
     
     @IBAction func addWalletButton(_ sender: Any) {
         

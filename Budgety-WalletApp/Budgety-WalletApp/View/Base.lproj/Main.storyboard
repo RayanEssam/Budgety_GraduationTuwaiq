@@ -757,19 +757,19 @@
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8Q-Ql-xYi">
                                                                             <rect key="frame" x="0.0" y="0.0" width="172" height="51.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <nil key="textColor"/>
+                                                                            <color key="textColor" name="TextColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1J-OP-weV">
                                                                             <rect key="frame" x="0.0" y="51.5" width="172" height="52"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <nil key="textColor"/>
+                                                                            <color key="textColor" name="TextColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eamil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iL1-XT-MGb">
                                                                             <rect key="frame" x="0.0" y="103.5" width="172" height="51.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <nil key="textColor"/>
+                                                                            <color key="textColor" name="TextColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
@@ -1320,27 +1320,9 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9Th-qH-e8N">
                                                 <rect key="frame" x="10" y="11" width="354" height="110"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light/Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gk2-UM-eYa">
-                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="110"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vct-VE-Mu3">
-                                                        <rect key="frame" x="177" y="0.0" width="177" height="110"/>
-                                                        <subviews>
-                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Kqp-f8-u1w">
-                                                                <rect key="frame" x="128" y="39.5" width="51" height="31"/>
-                                                                <connections>
-                                                                    <action selector="modeSwitchChanged:" destination="Apb-U4-4oW" eventType="valueChanged" id="w8D-ys-bwo"/>
-                                                                </connections>
-                                                            </switch>
-                                                        </subviews>
+                                                        <rect key="frame" x="0.0" y="0.0" width="354" height="110"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="Kqp-f8-u1w" secondAttribute="trailing" id="6Bs-MR-09M"/>
-                                                            <constraint firstItem="Kqp-f8-u1w" firstAttribute="centerY" secondItem="Vct-VE-Mu3" secondAttribute="centerY" id="uyv-yS-Oe8"/>
-                                                        </constraints>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1389,7 +1371,6 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="V4O-4y-uWK"/>
                     <connections>
                         <outlet property="emailLabel" destination="poS-ca-vtz" id="3Lx-0m-g0j"/>
-                        <outlet property="modeSwitch" destination="Kqp-f8-u1w" id="ZbR-Hc-Gxt"/>
                         <outlet property="nameLabel" destination="SfO-8f-CSe" id="g8N-fK-M2B"/>
                         <outlet property="signoutButton" destination="CqV-0M-hkr" id="WBp-aZ-nb4"/>
                     </connections>

@@ -16,7 +16,6 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet var emailLabel: UILabel!
     
-    @IBOutlet var modeSwitch: UISwitch!
     
     
     override func viewDidLoad() {
@@ -29,9 +28,6 @@ class SettingsViewController: UIViewController {
     }
     
     
-    
-    @IBAction func modeSwitchChanged(_ sender: Any) {
-    }
     
     
     @IBAction func signuotAction(_ sender: Any) {
